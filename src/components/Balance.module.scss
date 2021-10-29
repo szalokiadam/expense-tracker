@@ -1,0 +1,11 @@
+.total {
+  flex: 0 0 auto;
+  text-align: right;
+  align-self: flex-end;
+  &__amount {
+    display: block;
+    font-size: 20px;
+    margin: 5px 0 0;
+    font-weight: 700;
+  }
+}

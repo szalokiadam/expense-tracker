@@ -1,0 +1,101 @@
+@import "../_variables";
+
+.transactions {
+  flex: 1 1 50%;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  &__header {
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .trans_buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .trans_edit,
+  .trans_save {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    background: $dark-grey2;
+  }
+  &__list {
+    flex: 1 1 50%;
+    overflow: auto;
+    padding: 5px;
+    margin: 10px 0 0;
+    background: $light-grey2;
+    list-style: none;
+    border-radius: 3px;
+  }
+  li {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background: $white;
+    min-height: 42px;
+    border: 1px solid $grey;
+    border-radius: 3px;
+    margin: 4px 0;
+    padding: 5px;
+    font-size: 14px;
+    border-right: 5px solid transparent;
+    &.positive {
+      border-right-color: $dark-green;
+    }
+    &.negative {
+      border-right-color: $dark-red;
+    }
+  }
+
+  .trans_date {
+    flex: 0 0 auto;
+    width: 81px;
+    border-right: 1px solid $dark-grey;
+    margin-right: 5px;
+    padding-right: 5px;
+  }
+  .trans_title {
+    flex: 1 1 100%;
+  }
+  .trans_amount {
+    flex: 0 0 auto;
+    width: 20%;
+    text-align: right;
+  }
+  button {
+    text-indent: -9000px;
+    text-transform: capitalize;
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    border: none;
+    background: transparent;
+    margin-left: 5px;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+    color: $white;
+    border-radius: 50%;
+
+    &.trans_delete {
+      background: $dark-red;
+      font-size: 15px;
+    }
+  }
+}

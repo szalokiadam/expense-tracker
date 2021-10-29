@@ -1,0 +1,29 @@
+@import "./variables";
+
+.App {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  main {
+    width: 100%;
+    flex: 1 1 50%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+  }
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: $light-grey;
+  border: 1px solid $light-grey2;
+}
+::-webkit-scrollbar-thumb {
+  background: $dark-grey;
+}

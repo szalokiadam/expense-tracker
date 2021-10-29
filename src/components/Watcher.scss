@@ -1,0 +1,39 @@
+@import "../_variables";
+
+.watcher {
+  width: 100%;
+  &__container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    background: $white;
+    border-radius: 5px;
+    border: 1px solid $grey;
+    padding: 10px;
+    > div {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1 1 50%;
+      text-align: center;
+      font-size: 15px;
+      &:not(:first-of-type) {
+        border-left: 1px solid $grey;
+      }
+    }
+    .amount {
+      font-size: 18px;
+      font-weight: 700;
+      &.income {
+        color: $dark-green;
+      }
+      &.expense {
+        color: $dark-red;
+      }
+    }
+  }
+}
