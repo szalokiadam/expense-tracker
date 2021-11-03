@@ -5,12 +5,19 @@ import "./Watcher.scss";
 export default function Watcher() {
   const { transactions } = useContext(GlobalTransactions);
 
-  const income = transactions
-    .filter((tr) => tr.amount > 0)
-    .reduce((total, transaction) => total + transaction.amount, 0);
-  const expense = transactions
-    .filter((tr) => tr.amount < 0)
-    .reduce((total, transaction) => total - transaction.amount, 0);
+  function getIncome() {
+    return transactions
+      .filter((tr) => tr.amount > 0)
+      .reduce((total, transaction) => total + transaction.amount, 0);
+  }
+  function getExpense() {
+    return transactions
+      .filter((tr) => tr.amount < 0)
+      .reduce((total, transaction) => total - transaction.amount, 0);
+  }
+
+  const income = getIncome();
+  const expense = getExpense();
 
   return (
     <section className="watcher">

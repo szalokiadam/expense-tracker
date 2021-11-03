@@ -33,7 +33,7 @@ export function Header() {
 export function Footer() {
   return (
     <footer>
-      <p>Copyright: szalokia</p>
+      <p>Copyright: szalokia [{process.env.REACT_APP_VERSION}]</p>
     </footer>
   );
 }
