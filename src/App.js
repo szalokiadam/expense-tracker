@@ -35,13 +35,13 @@ function App() {
             <Switch>
               <Redirect
                 exact
-                from="expense-tracker/"
-                to="expense-tracker/home"
+                from={`${process.env.PUBLIC_URL}/`}
+                to={`${process.env.PUBLIC_URL}/home`}
               />
-              <Route path="expense-tracker/home">
+              <Route path={`${process.env.PUBLIC_URL}/home`}>
                 {login ? <LoginError /> : <Home />}
               </Route>
-              <Route path="expense-tracker/*">
+              <Route path={`${process.env.PUBLIC_URL}/*`}>
                 {login ? <LoginError /> : <Error404 />}
               </Route>
             </Switch>
