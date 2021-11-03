@@ -33,9 +33,13 @@ function App() {
         <main>
           <Router>
             <Switch>
-              <Redirect exact from="/" to="/home" />
-              <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
-              <Route path="*">{login ? <LoginError /> : <Error404 />}</Route>
+              <Redirect exact from="expense-tracker/" to="/home" />
+              <Route path="expense-tracker/home">
+                {login ? <LoginError /> : <Home />}
+              </Route>
+              <Route path="expense-tracker/*">
+                {login ? <LoginError /> : <Error404 />}
+              </Route>
             </Switch>
           </Router>
         </main>
