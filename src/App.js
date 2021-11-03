@@ -33,17 +33,9 @@ function App() {
         <main>
           <Router>
             <Switch>
-              <Redirect
-                exact
-                from={`${process.env.PUBLIC_URL}/`}
-                to={`${process.env.PUBLIC_URL}/home`}
-              />
-              <Route path={`${process.env.PUBLIC_URL}/home`}>
-                {login ? <LoginError /> : <Home />}
-              </Route>
-              <Route path={`${process.env.PUBLIC_URL}/*`}>
-                {login ? <LoginError /> : <Error404 />}
-              </Route>
+              <Redirect exact from="/" to="/home" />
+              <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
+              <Route path="*">{login ? <LoginError /> : <Error404 />}</Route>
             </Switch>
           </Router>
         </main>
