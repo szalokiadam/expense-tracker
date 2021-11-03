@@ -10,9 +10,7 @@ import Home from "./components/Home";
 import Error404 from "./components/Error404";
 import { Header, Footer } from "./components/HeaderFooter";
 import { loadStore } from "./components/Store";
-
 import { LoggedIn } from "./components/_globalContext";
-// import createHistory from "history/createBrowserHistory";
 
 function App() {
   const [login, setLogin] = useState(!loadStore("__login")[0]);
