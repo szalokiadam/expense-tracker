@@ -33,7 +33,11 @@ function App() {
         <main>
           <Router>
             <Switch>
-              <Redirect exact from="expense-tracker/" to="/home" />
+              <Redirect
+                exact
+                from="expense-tracker/"
+                to="expense-tracker/home"
+              />
               <Route path="expense-tracker/home">
                 {login ? <LoginError /> : <Home />}
               </Route>
