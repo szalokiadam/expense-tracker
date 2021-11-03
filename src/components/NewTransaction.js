@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { uniqueNumber } from "../Utilities";
 import style from "./NewTransaction.module.scss";
+import { GlobalTransactions } from "./_globalContext";
 
-export default function NewTransaction({ parentCallback }) {
+export default function NewTransaction() {
   let [title, setTitle] = useState("");
   let [amount, setAmount] = useState("");
+
+  const { transactions, setTransactions } = useContext(GlobalTransactions);
 
   function addToTransactions(event) {
     event.preventDefault();
@@ -19,7 +22,7 @@ export default function NewTransaction({ parentCallback }) {
 
     setTitle("");
     setAmount("");
-    parentCallback(data);
+    setTransactions([...transactions, data]);
   }
 
   return (

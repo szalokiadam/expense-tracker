@@ -1,19 +1,22 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import { BiEdit, BiSave, BiTrash, BiTrashAlt } from "react-icons/bi";
 import style from "./Transactions.module.scss";
+import { GlobalTransactions } from "./_globalContext";
 
-export default function Transactions({ transactions, parentCallback }) {
+export default function Transactions() {
   const [editable, setEditable] = useReducer((editable) => !editable);
 
   function clearAll() {
-    parentCallback([]);
+    setTransactions([]);
     setEditable();
   }
+  const { transactions, setTransactions } = useContext(GlobalTransactions);
+
   function deleteItem(currentTransaction) {
     const newTransactions = [...transactions].filter(
       (transaction) => transaction !== currentTransaction
     );
-    parentCallback([...newTransactions]);
+    setTransactions([...newTransactions]);
   }
 
   return (
