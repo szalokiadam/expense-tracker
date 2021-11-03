@@ -1,0 +1,32 @@
+@import "../variables";
+
+.loadingScreen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background: $dark-grey3;
+  z-index: 10;
+  .icon {
+    flex: 0 0 auto;
+    font-size: 60px;
+    color: $orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h2 {
+    flex: 0 0 auto;
+    margin: 10px;
+    font-size: 25px;
+    color: $light-grey;
+  }
+  &.fade {
+    background: chartreuse;
+  }
+}

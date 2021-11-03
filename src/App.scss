@@ -16,6 +16,44 @@
     align-items: center;
     overflow: hidden;
   }
+  button,
+  input {
+    box-sizing: border-box;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid $dark-grey2;
+    border-radius: 3px;
+  }
+  button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background: $light-grey;
+    &:active {
+      background: darken($light-grey, 10%);
+    }
+    &.primary {
+      background: $dark-blue;
+      color: $white;
+      &:active {
+        background: darken($dark-blue, 10%);
+      }
+    }
+  }
+  .button-icon {
+    flex: 0 0 auto;
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    color: $dark-blue;
+    margin-right: 5px;
+  }
+  .error {
+    display: block;
+    font-size: 14px;
+    color: $dark-red;
+  }
 }
 ::-webkit-scrollbar {
   width: 4px;

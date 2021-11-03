@@ -12,7 +12,7 @@ form {
     flex-flow: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 8px 0 0;
+    margin: 5px 0 0;
     span {
       font-size: 14px;
       margin-bottom: 3px;
@@ -21,18 +21,11 @@ form {
   input,
   button {
     width: 100%;
-    box-sizing: border-box;
-    padding: 5px 10px;
-    font-size: 14px;
-    border: 1px solid $dark-grey2;
-    border-radius: 3px;
   }
   button {
     padding: 10px;
     margin: 10px 0 0;
-    background: $dark-blue;
     border: none;
-    color: $white;
     text-transform: uppercase;
   }
 }

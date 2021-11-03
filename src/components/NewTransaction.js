@@ -51,7 +51,9 @@ export default function NewTransaction() {
             }}
           />
         </label>
-        <button type="submit">Add new item</button>
+        <button className="primary" type="submit">
+          Add new item
+        </button>
       </form>
     </section>
   );

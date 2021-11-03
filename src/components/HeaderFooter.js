@@ -1,12 +1,10 @@
 import React, { useEffect, useReducer, useContext } from "react";
-import { BiDollarCircle } from "react-icons/bi";
+import { BiDollarCircle, BiGhost } from "react-icons/bi";
 import "./HeaderFooter.scss";
 import Login from "./Login";
-import { loadStore } from "./Store";
 import { LoggedIn } from "./_globalContext";
 
 export function Header() {
-  const storeName = loadStore("__login")[0]?.storeName;
   const [loginOpener, toggleOpener] = useReducer((opener) => !opener, true);
   const { login } = useContext(LoggedIn);
 
@@ -22,7 +20,10 @@ export function Header() {
       </h1>
       <div className="login-container">
         <button className="login-button" onClick={toggleOpener}>
-          {storeName ? "Profile" : "Login"}
+          <span className="button-icon">
+            <BiGhost />
+          </span>
+          {login ? "Login" : "Profile"}
         </button>
         {loginOpener && <Login />}
       </div>

@@ -9,18 +9,17 @@ import NewTransaction from "./NewTransaction";
 import { GlobalTransactions } from "./_globalContext";
 
 export default function Home() {
-  const storeName = loadStore("__login")[0]?.storeName;
+  const userName = loadStore("__login")[0]?.userName;
 
-  const [transactions, setTransactions] = useState(loadStore(storeName));
+  const [transactions, setTransactions] = useState(loadStore(userName));
   const transactionValues = useMemo(
     () => ({ transactions, setTransactions }),
     [transactions]
   );
 
   useEffect(() => {
-    saveStore(storeName, transactions);
-    console.log(transactions);
-  }, [transactions]);
+    saveStore(userName, transactions);
+  }, [transactions, userName]);
 
   return (
     <div className="expense-tracker">
