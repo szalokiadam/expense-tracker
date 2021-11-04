@@ -1,11 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import "./App.scss";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Error404 from "./components/Error404";
 import LoginError from "./components/LoginError";
@@ -31,13 +26,11 @@ function App() {
       <LoggedIn.Provider value={loginValues}>
         <Header />
         <main>
-          <Router>
-            <Switch>
-              <Redirect exact from="/" to="/home" />
-              <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
-              <Route path="*">{login ? <LoginError /> : <Error404 />}</Route>
-            </Switch>
-          </Router>
+          <Switch>
+            <Redirect exact from="/" to="/home" />
+            <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
+            <Route path="*">{login ? <LoginError /> : <Error404 />}</Route>
+          </Switch>
         </main>
         <Footer />
       </LoggedIn.Provider>
