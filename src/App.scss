@@ -1,5 +1,14 @@
-@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
+@import "./_variables";
 
+html {
+  background: $light-grey;
+}
+html,
+button,
+input {
+  font-family: "Ubuntu", sans-serif;
+}
 .App {
   position: fixed;
   top: 0;

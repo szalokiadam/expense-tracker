@@ -1,0 +1,27 @@
+@import "../_variables";
+
+.expense-tracker {
+  flex: 1 1 50%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  h1 {
+    flex: 0 0 auto;
+    font-size: 25px;
+    margin: 0 auto 35px;
+    text-align: center;
+  }
+}
+section {
+  margin: 10px 0;
+  .section-title {
+    font-size: 15px;
+    margin: 0;
+  }
+}

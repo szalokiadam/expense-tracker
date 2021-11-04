@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useContext } from "react";
-import { BiDollarCircle, BiGhost } from "react-icons/bi";
+import { BiDollarCircle, BiUser as ProfileIcon } from "react-icons/bi";
 import "./HeaderFooter.scss";
 import Login from "./Login";
 import { LoggedIn } from "./_globalContext";
@@ -21,7 +21,7 @@ export function Header() {
       <div className="login-container">
         <button className="login-button" onClick={toggleOpener}>
           <span className="button-icon">
-            <BiGhost />
+            <ProfileIcon />
           </span>
           {login ? "Login" : "Profile"}
         </button>
