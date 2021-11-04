@@ -10,12 +10,12 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  background: $dark-grey3;
+  background: $background-color;
   z-index: 10;
   .icon {
     flex: 0 0 auto;
     font-size: 60px;
-    color: $orange;
+    color: $primary;
     display: flex;
     justify-content: center;
     align-items: center;

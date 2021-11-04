@@ -3,7 +3,7 @@ import { loadStore, saveStore } from "./Store";
 import { checkPermission } from "./permissions";
 import "./Login.scss";
 import { LoggedIn } from "./_globalContext";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOut, BiTimeFive } from "react-icons/bi";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -30,7 +30,7 @@ export default function Login() {
   };
   function loginPage() {
     return (
-      <div className="loginInner">
+      <div className="loginInner loginBox">
         <h2>Login</h2>
         <span className="error">{!valid && "Username/password invalid"}</span>
         <form onSubmit={submitLogin}>
@@ -44,6 +44,8 @@ export default function Login() {
                 setUsername(e.target.value);
                 setValid(true);
               }}
+              autoFocus={true}
+              autoComplete={false}
             />
           </label>
           <label>
@@ -58,7 +60,9 @@ export default function Login() {
               }}
             />
           </label>
-          <button type="submit">Login</button>
+          <button type="submit" className="primary">
+            Login
+          </button>
         </form>
       </div>
     );
@@ -70,13 +74,21 @@ export default function Login() {
     return (
       <div className="loginInner">
         <h2>Profile</h2>
-        <p>User name: {userName}</p>
-        <button type="button" onClick={submitLogout}>
-          <span className="button-icon">
-            <BiLogOut style={{ transform: "rotate(180deg)" }} />
-          </span>
-          Logout
-        </button>
+        <p>User: {userName}</p>
+        <div className="buttons">
+          <button type="button" className="neutral">
+            <span className="button-icon">
+              <BiTimeFive />
+            </span>
+            Transactions by month
+          </button>
+          <button type="button" onClick={submitLogout} className="neutral">
+            <span className="button-icon">
+              <BiLogOut style={{ transform: "rotate(180deg)" }} />
+            </span>
+            Logout
+          </button>
+        </div>
       </div>
     );
   }

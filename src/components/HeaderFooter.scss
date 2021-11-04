@@ -5,25 +5,36 @@ footer {
   flex: 0 0 auto;
   width: 100%;
   box-sizing: border-box;
-  padding: 5px 10px;
+  padding: 10px;
 }
 header {
-  background: $dark-grey2;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  h1 {
+  .title {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     margin: 0;
-    font-size: 25px;
+    font-size: 18px;
     color: $light-grey;
+    @media ($breakpoint-mobile) {
+      padding: 10px 15px;
+      font-size: 20px;
+    }
+    @media ($breakpoint-tablet) {
+      font-size: 25px;
+    }
+  }
+  @media ($breakpoint-mobile) {
+    padding: 10px 15px;
+  }
+  @media ($breakpoint-tablet) {
+    padding: 15px;
   }
 }
 footer {
-  background: $dark-grey3;
   p {
     margin: 0;
     text-align: center;

@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useContext } from "react";
-import { BiDollarCircle, BiUser as ProfileIcon } from "react-icons/bi";
+import { BiUser as ProfileIcon } from "react-icons/bi";
 import "./HeaderFooter.scss";
 import Login from "./Login";
 import { LoggedIn } from "./_globalContext";
@@ -14,12 +14,10 @@ export function Header() {
 
   return (
     <header>
-      <h1>
-        <BiDollarCircle />
-        Expense Tracker
-      </h1>
+      <h1 className="title">Expense Tracker</h1>
       <div className="login-container">
-        <button className="login-button" onClick={toggleOpener}>
+        {login && <button className="register-button neutral">Register</button>}
+        <button className="login-button primary" onClick={toggleOpener}>
           <span className="button-icon">
             <ProfileIcon />
           </span>

@@ -29,13 +29,17 @@
     height: 30px;
     font-size: 20px;
     background: $dark-grey2;
+    &:active,
+    &:focus {
+      background: lighten($dark-grey2, 15%);
+    }
   }
   &__list {
     flex: 1 1 50%;
     overflow: auto;
-    padding: 5px;
+    padding: 0 5px 0 0;
     margin: 10px 0 0;
-    background: $light-grey2;
+    background: transparent;
     list-style: none;
     border-radius: 3px;
   }
@@ -44,12 +48,12 @@
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
-    background: $white;
-    min-height: 42px;
-    border: 1px solid $grey;
+    background: $background-color2;
+    min-height: 35px;
+    border: 1px solid transparent;
     border-radius: 3px;
-    margin: 4px 0;
-    padding: 5px;
+    margin: 0 0 10px;
+    padding: 5px 10px;
     font-size: 14px;
     border-right: 5px solid transparent;
     &.positive {
@@ -62,10 +66,11 @@
 
   .trans_date {
     flex: 0 0 auto;
-    width: 81px;
+    width: 80px;
     border-right: 1px solid $dark-grey;
     margin-right: 5px;
     padding-right: 5px;
+    box-sizing: border-box;
   }
   .trans_title {
     flex: 1 1 100%;
@@ -96,6 +101,10 @@
     &.trans_delete {
       background: $dark-red;
       font-size: 15px;
+      &:active,
+      &:focus {
+        background: lighten($dark-red, 15%);
+      }
     }
   }
 }

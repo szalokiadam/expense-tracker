@@ -2,23 +2,61 @@
 
 .login-container {
   position: relative;
-  .login-button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  button {
     appearance: none;
-    border: 1px solid $dark-grey3;
+    border: 0;
+    color: $light-grey;
     padding: 5px 10px;
+    &.register-button {
+      &:active {
+        background: $background-color2;
+      }
+    }
+    @media ($breakpoint-mobile) {
+      padding: 10px 20px;
+    }
+    & + button {
+      margin-left: 10px;
+    }
   }
 }
 
 .loginInner {
-  background: $white;
-  border: 1px solid $dark-grey3;
-  padding: 10px;
+  background: $background-color2;
   position: absolute;
+  left: auto;
   right: 0;
-  top: 100%;
-  width: 200px;
-  button {
-    width: 100%;
+  top: calc(100% + 5px);
+  width: 220px;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px;
+  transform: none;
+  &.loginBox {
+    background: $background-color;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 30px);
+  }
+  .buttons {
+    button {
+      justify-content: flex-start;
+      width: 100%;
+      & + button {
+        margin: 5px 0 0;
+      }
+      &:active,
+      &:focus {
+        background: lighten($background-color2, 15%);
+      }
+    }
   }
   h2 {
     margin: 0;
@@ -34,8 +72,26 @@
     justify-content: flex-start;
     align-items: stretch;
   }
+  label {
+    margin: 10px 0;
+    span {
+      margin-bottom: 8px;
+    }
+  }
+  input {
+    background: $background-color2;
+  }
+  input,
+  button {
+    padding: 10px;
+  }
   .error {
     height: 16px;
     margin: 5px 0;
+  }
+  @media ($breakpoint-tablet) {
+    &.loginBox {
+      width: 400px;
+    }
   }
 }

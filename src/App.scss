@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
 @import "./_variables";
 
-html {
-  background: $light-grey;
-}
 html,
 button,
 input {
@@ -20,7 +17,10 @@ input {
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
-  color: $dark-grey3;
+  color: $font-color;
+  background: $background-color;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
   main {
     width: 100%;
     flex: 1 1 50%;
@@ -37,6 +37,14 @@ input {
     font-size: 14px;
     border: 1px solid $dark-grey2;
     border-radius: 3px;
+    color: $font-color;
+  }
+  input {
+    background: $background-color2;
+    &:focus {
+      border-color: $primary;
+      outline: 0;
+    }
   }
   button {
     display: flex;
@@ -45,14 +53,30 @@ input {
     align-items: center;
     background: $light-grey;
     color: $dark-grey3;
-    &:active {
-      background: darken($light-grey, 10%);
+    cursor: pointer;
+
+    &:focus {
+      border-color: transparent;
+      outline: 0;
+    }
+    &:active,
+    &:focus {
+      background: lighten($light-grey, 15%);
     }
     &.primary {
-      background: $dark-blue;
-      color: $white;
-      &:active {
-        background: darken($dark-blue, 10%);
+      background: $primary;
+      color: $font-color;
+      &:active,
+      &:focus {
+        background: lighten($primary, 15%);
+      }
+    }
+    &.neutral {
+      background: transparent;
+      color: $font-color;
+      &:active,
+      &:focus {
+        background: transparent;
       }
     }
   }
@@ -61,7 +85,6 @@ input {
     align-items: center;
     display: flex;
     font-size: 20px;
-    color: $dark-blue;
     margin-right: 5px;
   }
   .error {
@@ -74,9 +97,9 @@ input {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: $light-grey;
-  border: 1px solid $light-grey2;
+  background: transparent;
+  border: 1px solid $background-color2;
 }
 ::-webkit-scrollbar-thumb {
-  background: $dark-grey;
+  background: $background-color2;
 }

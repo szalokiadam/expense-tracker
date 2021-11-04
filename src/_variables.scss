@@ -1,3 +1,4 @@
+// COLORS
 $dark-grey: #888;
 $dark-grey2: #555;
 $dark-grey3: #222;
@@ -9,5 +10,15 @@ $dark-red: #cc0000;
 $dark-green: #00cc00;
 $dark-blue: #0000cc;
 $orange: #ff8800;
+$primary: #ff9900;
+$font-color: #eeeeee;
+$background-color: #282828;
+$background-color2: lighten($background-color, 10%);
+
+// BREAKPOINTS
+$breakpoint-mobile: "min-width: 481px";
+$breakpoint-tablet: "min-width: 769px";
+$breakpoint-desktop: "min-width: 1025px";
+$breakpoint-desktop-hd: "min-width: 1201px";
 
 @import "./mixins";
