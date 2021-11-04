@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import "./App.scss";
+import "./resources/scss/App.scss";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Error404 from "./components/Error404";
@@ -21,20 +21,23 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {loading && <LoadingScreen />}
-      <LoggedIn.Provider value={loginValues}>
-        <Header />
-        <main>
-          <Switch>
-            <Redirect exact from="/" to="/home" />
-            <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
-            <Route path="*">{login ? <LoginError /> : <Error404 />}</Route>
-          </Switch>
-        </main>
-        <Footer />
-      </LoggedIn.Provider>
-    </div>
+    <>
+      <div className="Background"></div>
+      <div className="App">
+        {loading && <LoadingScreen />}
+        <LoggedIn.Provider value={loginValues}>
+          <Header />
+          <main>
+            <Switch>
+              <Redirect exact from="/" to="/home" />
+              <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
+              <Route path="*">{login ? <LoginError /> : <Error404 />}</Route>
+            </Switch>
+          </main>
+          <Footer />
+        </LoggedIn.Provider>
+      </div>
+    </>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useContext } from "react";
 import { BiUser as ProfileIcon } from "react-icons/bi";
-import "./HeaderFooter.scss";
+import "../resources/scss/HeaderFooter.scss";
 import Login from "./Login";
 import { LoggedIn } from "./_globalContext";
 

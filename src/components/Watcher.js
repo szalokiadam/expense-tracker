@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalTransactions } from "./_globalContext";
-import "./Watcher.scss";
+import "../resources/scss/Watcher.scss";
 
 export default function Watcher() {
   const { transactions } = useContext(GlobalTransactions);

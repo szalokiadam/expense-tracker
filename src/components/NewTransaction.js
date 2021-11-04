@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { uniqueNumber } from "../Utilities";
-import style from "./NewTransaction.module.scss";
+import style from "../resources/scss/NewTransaction.module.scss";
 import { GlobalTransactions } from "./_globalContext";
 
 export default function NewTransaction() {

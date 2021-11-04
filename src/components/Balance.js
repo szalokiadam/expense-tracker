@@ -1,4 +1,4 @@
-import style from "./Balance.module.scss";
+import style from "../resources/scss/Balance.module.scss";
 import { useContext } from "react";
 import { GlobalTransactions } from "./_globalContext";
 

@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { loadStore, saveStore } from "./Store";
 import { checkPermission } from "./permissions";
-import "./Login.scss";
+import "../resources/scss/Login.scss";
 import { LoggedIn } from "./_globalContext";
 import { BiLogOut, BiTimeFive } from "react-icons/bi";
 

@@ -6,7 +6,7 @@ import Watcher from "./Watcher";
 import Transactions from "./Transactions";
 import NewTransaction from "./NewTransaction";
 import { GlobalTransactions } from "./_globalContext";
-import "./Home.scss";
+import "../resources/scss/Home.scss";
 
 export default function Home() {
   const userName = loadStore("__login")[0]?.userName;

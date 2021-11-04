@@ -1,5 +1,4 @@
 import React, { useReducer, useContext } from "react";
-import { useState } from "react";
 import {
   BiEdit,
   BiListPlus,
@@ -7,12 +6,11 @@ import {
   BiTrash,
   BiTrashAlt,
 } from "react-icons/bi";
-import style from "./Transactions.module.scss";
+import style from "../resources/scss/Transactions.module.scss";
 import { GlobalTransactions } from "./_globalContext";
 
 export default function Transactions() {
   const [editable, setEditable] = useReducer((editable) => !editable);
-  const [modalOpen, setModalOpen] = useState(false);
 
   function clearAll() {
     setTransactions([]);

@@ -1,4 +1,4 @@
-import "./LoginError.scss";
+import "../resources/scss/LoginError.scss";
 
 export default function LoginError() {
   return (

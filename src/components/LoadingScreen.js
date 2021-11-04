@@ -1,4 +1,4 @@
-import "./LoadingScreen.scss";
+import "../resources/scss/LoadingScreen.scss";
 import { BiDollarCircle } from "react-icons/bi";
 
 export default function LoadingScreen() {
