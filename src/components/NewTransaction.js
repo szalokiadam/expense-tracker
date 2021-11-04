@@ -32,6 +32,7 @@ export default function NewTransaction() {
         <label>
           <span>Title:</span>
           <input
+            placeholder="Item name"
             name="title"
             type="text"
             value={title}
@@ -43,6 +44,7 @@ export default function NewTransaction() {
         <label>
           <span>Amount:</span>
           <input
+            placeholder="Item cost"
             name="amount"
             type="number"
             value={amount}
