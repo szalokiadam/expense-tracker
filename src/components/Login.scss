@@ -89,7 +89,7 @@
     height: 16px;
     margin: 5px 0;
   }
-  @media ($breakpoint-tablet) {
+  @media ($breakpoint-mobile) {
     &.loginBox {
       width: 400px;
     }
