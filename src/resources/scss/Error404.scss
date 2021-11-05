@@ -6,24 +6,40 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  > div {
+  .background {
+    width: 180px;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    background: rgba($orange, 15%);
+    border-radius: 10px;
+    transform: translate(-50%, -50%) rotate(15deg);
+    z-index: -1;
+    &::after {
+      display: block;
+      content: "";
+      padding-top: 100%;
+    }
+  }
+  .error-text {
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     margin: auto;
     padding: 0;
     height: 200px;
-    background: $grey;
+    font-size: 50px;
   }
   h2 {
     margin: 10px;
-    font-size: 25px;
+    font-size: 100%;
+    color: $orange;
   }
   p {
     margin: 5px;
-    font-size: 16px;
+    font-size: 50%;
   }
 }

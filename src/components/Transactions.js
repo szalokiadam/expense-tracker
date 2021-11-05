@@ -1,11 +1,5 @@
 import React, { useReducer, useContext } from "react";
-import {
-  BiEdit,
-  BiListPlus,
-  BiSave,
-  BiTrash,
-  BiTrashAlt,
-} from "react-icons/bi";
+import { BiEdit, BiSave, BiTrash, BiTrashAlt } from "react-icons/bi";
 import style from "../resources/scss/Transactions.module.scss";
 import { GlobalTransactions } from "./_globalContext";
 
@@ -24,7 +18,6 @@ export default function Transactions() {
     );
     setTransactions([...newTransactions]);
   }
-  function openNewTransaction() {}
 
   return (
     <section className={style.transactions}>
@@ -58,14 +51,6 @@ export default function Transactions() {
                 >
                   Edit
                   <BiEdit />
-                </button>
-                <button
-                  title="New"
-                  className={style.trans_edit}
-                  onClick={openNewTransaction}
-                >
-                  New
-                  <BiListPlus />
                 </button>
               </>
             ))}

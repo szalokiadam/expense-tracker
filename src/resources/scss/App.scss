@@ -17,6 +17,9 @@ input {
   // bottom: 0;
   // right: 0;
 }
+body {
+  color: $font-color;
+}
 .App {
   position: fixed;
   top: 0;
@@ -30,7 +33,6 @@ input {
   align-items: flex-start;
   color: $font-color;
   background: $background-color;
-  // background: rgba($background-color, 0.3);
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   main {
@@ -42,68 +44,73 @@ input {
     align-items: center;
     overflow: hidden;
   }
-  button,
-  input {
-    box-sizing: border-box;
-    padding: 5px 10px;
-    font-size: 14px;
-    border: 1px solid $dark-grey2;
-    border-radius: 3px;
-    color: $font-color;
+}
+button,
+input {
+  box-sizing: border-box;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid $dark-grey2;
+  border-radius: 3px;
+  color: $font-color;
+}
+input {
+  background: $background-color2;
+  &:focus {
+    border-color: $primary;
+    outline: 0;
   }
-  input {
-    background: $background-color2;
-    &:focus {
-      border-color: $primary;
-      outline: 0;
-    }
-  }
-  button {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    background: $light-grey;
-    color: $dark-grey3;
-    cursor: pointer;
+}
+button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background: $light-grey;
+  color: $dark-grey3;
+  cursor: pointer;
 
-    &:focus {
-      border-color: transparent;
-      outline: 0;
-    }
+  &:focus {
+    border-color: transparent;
+    outline: 0;
+  }
+  &:active,
+  &:focus {
+    background: lighten($light-grey, 15%);
+  }
+  &.primary {
+    background: $primary;
+    color: $font-color;
     &:active,
     &:focus {
-      background: lighten($light-grey, 15%);
+      background: lighten($primary, 15%);
     }
-    &.primary {
-      background: $primary;
-      color: $font-color;
-      &:active,
-      &:focus {
-        background: lighten($primary, 15%);
-      }
-    }
-    &.neutral {
+  }
+  &.neutral {
+    background: transparent;
+    color: $font-color;
+    &:active,
+    &:focus {
       background: transparent;
-      color: $font-color;
-      &:active,
-      &:focus {
-        background: transparent;
-      }
     }
   }
-  .button-icon {
-    flex: 0 0 auto;
-    align-items: center;
-    display: flex;
-    font-size: 20px;
-    margin-right: 5px;
-  }
-  .error {
-    display: block;
-    font-size: 14px;
-    color: $dark-red;
-  }
+}
+.button-icon {
+  flex: 0 0 auto;
+  align-items: center;
+  display: flex;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.error {
+  display: block;
+  font-size: 14px;
+  color: $dark-red;
+}
+a {
+  display: block;
+  color: $font-color;
+  text-decoration: none;
 }
 ::-webkit-scrollbar {
   width: 4px;

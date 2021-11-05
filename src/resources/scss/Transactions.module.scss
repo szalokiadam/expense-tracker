@@ -25,9 +25,9 @@
   }
   .trans_edit,
   .trans_save {
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
     background: $dark-grey2;
     &:active,
     &:focus {
@@ -91,7 +91,7 @@
     appearance: none;
     border: none;
     background: transparent;
-    margin-left: 5px;
+    margin-left: 10px;
     padding: 2px;
     width: 25px;
     height: 25px;

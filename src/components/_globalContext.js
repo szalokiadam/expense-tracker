@@ -9,3 +9,8 @@ export const LoggedIn = createContext({
   loggedIn: false,
   setLoggedIn: () => {},
 });
+
+export const MenuOpener = createContext({
+  menuOpened: false,
+  setMenuToggle: () => {},
+});

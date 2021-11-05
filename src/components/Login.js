@@ -4,6 +4,8 @@ import { checkPermission } from "./permissions";
 import "../resources/scss/Login.scss";
 import { LoggedIn } from "./_globalContext";
 import { BiLogOut, BiTimeFive } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import { MenuOpener } from "./_globalContext";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -11,6 +13,7 @@ export default function Login() {
   const [valid, setValid] = useState(true);
 
   const { login, setLogin } = useContext(LoggedIn);
+  const { setMenuToggle } = useContext(MenuOpener);
 
   function submitLogin(event) {
     event.preventDefault();
@@ -45,7 +48,6 @@ export default function Login() {
                 setValid(true);
               }}
               autoFocus={true}
-              autoComplete={false}
             />
           </label>
           <label>
@@ -76,12 +78,14 @@ export default function Login() {
         <h2>Profile</h2>
         <p>User: {userName}</p>
         <div className="buttons">
-          <button type="button" className="neutral">
-            <span className="button-icon">
-              <BiTimeFive />
-            </span>
-            Transactions by month
-          </button>
+          <Link to="/monthly-transactions" onClick={setMenuToggle}>
+            <button type="button" className="neutral">
+              <span className="button-icon">
+                <BiTimeFive />
+              </span>
+              Transactions by month
+            </button>
+          </Link>
           <button type="button" onClick={submitLogout} className="neutral">
             <span className="button-icon">
               <BiLogOut style={{ transform: "rotate(180deg)" }} />
