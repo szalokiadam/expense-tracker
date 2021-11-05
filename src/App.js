@@ -5,13 +5,21 @@ import Home from "./components/Home";
 import Error404 from "./components/Error404";
 import LoginError from "./components/LoginError";
 import LoadingScreen from "./components/LoadingScreen";
+import MonthlyTransactions from "./components/MonthlyTransactions";
 import { Header, Footer } from "./components/HeaderFooter";
 import { loadStore } from "./components/Store";
-import { LoggedIn } from "./components/_globalContext";
+import { GlobalTransactions, LoggedIn } from "./components/_globalContext";
 
 function App() {
-  const [login, setLogin] = useState(!loadStore("__login")[0]);
+  const userName = loadStore("__login")[0]?.userName;
+  const [login, setLogin] = useState(!userName);
   const [loading, setLoading] = useState(true);
+  const [transactions, setTransactions] = useState(loadStore(userName));
+
+  const transactionValues = useMemo(
+    () => ({ transactions, setTransactions }),
+    [transactions]
+  );
 
   const loginValues = useMemo(() => ({ login, setLogin }), [login]);
   useEffect(() => {
@@ -31,9 +39,12 @@ function App() {
             <Switch>
               {login && <LoginError />}
               <Redirect exact from="/" to="/home" />
-
-              <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
-              <Route path="/monthly-transactions">MONTHLY TRANSACTION</Route>
+              <GlobalTransactions.Provider value={transactionValues}>
+                <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
+                <Route path="/monthly-transactions">
+                  <MonthlyTransactions />
+                </Route>
+              </GlobalTransactions.Provider>
               <Route path="*">
                 <Error404 />
               </Route>

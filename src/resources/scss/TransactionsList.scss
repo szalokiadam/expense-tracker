@@ -1,0 +1,48 @@
+@import "./variables";
+
+.transactions__list {
+  flex: 1 1 50%;
+  overflow: auto;
+  padding: 0 5px 0 0;
+  margin: 10px 0 0;
+  background: transparent;
+  list-style: none;
+  border-radius: 3px;
+  li {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background: $background-color2;
+    min-height: 35px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-right: 5px solid transparent;
+    &.positive {
+      border-right-color: $dark-green;
+    }
+    &.negative {
+      border-right-color: $dark-red;
+    }
+  }
+
+  .trans_date {
+    flex: 0 0 auto;
+    width: 80px;
+    border-right: 1px solid $dark-grey2;
+    margin-right: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+  }
+  .trans_title {
+    flex: 1 1 100%;
+  }
+  .trans_amount {
+    flex: 0 0 auto;
+    width: 20%;
+    text-align: right;
+  }
+}

@@ -3,7 +3,7 @@ import { loadStore, saveStore } from "./Store";
 import { checkPermission } from "./permissions";
 import "../resources/scss/Login.scss";
 import { LoggedIn } from "./_globalContext";
-import { BiLogOut, BiTimeFive } from "react-icons/bi";
+import { BiLogOut, BiMoney, BiTimeFive } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { MenuOpener } from "./_globalContext";
 
@@ -78,6 +78,14 @@ export default function Login() {
         <h2>Profile</h2>
         <p>User: {userName}</p>
         <div className="buttons">
+          <Link to="/" onClick={setMenuToggle}>
+            <button type="button" className="neutral">
+              <span className="button-icon">
+                <BiMoney />
+              </span>
+              All Transactions
+            </button>
+          </Link>
           <Link to="/monthly-transactions" onClick={setMenuToggle}>
             <button type="button" className="neutral">
               <span className="button-icon">
@@ -93,6 +101,9 @@ export default function Login() {
             Logout
           </button>
         </div>
+        <span className="version">
+          version: {process.env.REACT_APP_VERSION}
+        </span>
       </div>
     );
   }

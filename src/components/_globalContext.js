@@ -14,3 +14,8 @@ export const MenuOpener = createContext({
   menuOpened: false,
   setMenuToggle: () => {},
 });
+
+export const DateRangeFn = createContext({
+  dateRange: "",
+  setDateRange: () => {},
+});

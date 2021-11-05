@@ -1,0 +1,12 @@
+@import "./variables";
+
+.dateRange {
+  flex: 0 0 auto;
+  form {
+    label {
+      & + label {
+        margin-left: 10px;
+      }
+    }
+  }
+}

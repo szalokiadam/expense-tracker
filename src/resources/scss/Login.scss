@@ -35,8 +35,10 @@
   padding: 20px 15px;
   box-sizing: border-box;
   border-radius: 5px;
+  border: 1px solid $background-color;
   padding: 10px;
   transform: none;
+  z-index: 1;
   &.loginBox {
     background: $background-color;
     position: fixed;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect, useContext } from "react";
 
 import { loadStore, saveStore } from "./Store";
 import Balance from "./Balance";
@@ -11,11 +11,7 @@ import "../resources/scss/Home.scss";
 export default function Home() {
   const userName = loadStore("__login")[0]?.userName;
 
-  const [transactions, setTransactions] = useState(loadStore(userName));
-  const transactionValues = useMemo(
-    () => ({ transactions, setTransactions }),
-    [transactions]
-  );
+  const { transactions } = useContext(GlobalTransactions);
 
   useEffect(() => {
     saveStore(userName, transactions);
@@ -23,12 +19,10 @@ export default function Home() {
 
   return (
     <div className="expense-tracker">
-      <GlobalTransactions.Provider value={transactionValues}>
-        <Balance />
-        <Watcher />
-        <Transactions />
-        <NewTransaction />
-      </GlobalTransactions.Provider>
+      <Balance />
+      <Watcher />
+      <Transactions />
+      <NewTransaction />
     </div>
   );
 }

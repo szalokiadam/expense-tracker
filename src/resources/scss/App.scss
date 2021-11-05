@@ -112,6 +112,11 @@ a {
   color: $font-color;
   text-decoration: none;
 }
+.version {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+}
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -121,4 +126,8 @@ a {
 }
 ::-webkit-scrollbar-thumb {
   background: $background-color2;
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  z-index: 0;
 }

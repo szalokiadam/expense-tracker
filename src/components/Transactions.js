@@ -1,7 +1,9 @@
 import React, { useReducer, useContext } from "react";
-import { BiEdit, BiSave, BiTrash, BiTrashAlt } from "react-icons/bi";
-import style from "../resources/scss/Transactions.module.scss";
+import { BiEdit, BiSave, BiTrash } from "react-icons/bi";
+import "../resources/scss/Transactions.scss";
 import { GlobalTransactions } from "./_globalContext";
+
+import TransactionsList from "./TransactionsList";
 
 export default function Transactions() {
   const [editable, setEditable] = useReducer((editable) => !editable);
@@ -12,31 +14,24 @@ export default function Transactions() {
   }
   const { transactions, setTransactions } = useContext(GlobalTransactions);
 
-  function deleteItem(currentTransaction) {
-    const newTransactions = [...transactions].filter(
-      (transaction) => transaction !== currentTransaction
-    );
-    setTransactions([...newTransactions]);
-  }
-
   return (
-    <section className={style.transactions}>
-      <div className={style.transactions__header}>
+    <section className="transactions">
+      <div className="transactions__header">
         <p className="section-title">Transactions</p>
-        <div className={style.trans_buttons}>
+        <div className="trans_buttons">
           {transactions.length > 0 &&
             (editable && transactions.length > 0 ? (
               <>
                 <button
                   title="Clear All"
-                  className={style.trans_save}
+                  className="trans_save"
                   onClick={clearAll}
                 >
                   Clear All <BiTrash />
                 </button>
                 <button
                   title="Save"
-                  className={style.trans_save}
+                  className="trans_save"
                   onClick={setEditable}
                 >
                   Save <BiSave />
@@ -46,7 +41,7 @@ export default function Transactions() {
               <>
                 <button
                   title="Edit"
-                  className={style.trans_edit}
+                  className="trans_edit"
                   onClick={setEditable}
                 >
                   Edit
@@ -56,35 +51,7 @@ export default function Transactions() {
             ))}
         </div>
       </div>
-      <ul className={style.transactions__list}>
-        {transactions.map((transaction) => {
-          const date = new Date(transaction.created).toLocaleDateString(
-            "en-US"
-          );
-          return (
-            <li
-              key={transaction.id}
-              className={
-                transaction.amount < 0 ? style.negative : style.positive
-              }
-            >
-              <span className={style.trans_date}>{date}</span>
-              <span className={style.trans_title}>{transaction.title}</span>
-              <span className={style.trans_amount}>{transaction.amount}</span>
-              {editable && (
-                <>
-                  <button
-                    className={style.trans_delete}
-                    onClick={() => deleteItem(transaction)}
-                  >
-                    Delete <BiTrashAlt />
-                  </button>
-                </>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+      <TransactionsList editable={editable} />
     </section>
   );
 }

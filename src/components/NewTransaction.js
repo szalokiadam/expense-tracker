@@ -39,6 +39,7 @@ export default function NewTransaction() {
         shouldCloseOnEsc={true}
         onRequestClose={toggleOpener}
         className={style.addNewItem}
+        ariaHideApp={false}
         style={{
           overlay: {
             backgroundColor: "rgba(238, 238, 238, 0.7)",
@@ -87,7 +88,7 @@ export default function NewTransaction() {
             />
           </label>
           <button className="primary" type="submit">
-            Add new item
+            Add to list
           </button>
         </form>
       </Modal>
