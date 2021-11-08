@@ -83,7 +83,7 @@ export default function Login() {
               <span className="button-icon">
                 <BiMoney />
               </span>
-              All Transactions
+              Latest Transactions
             </button>
           </Link>
           <Link to="/monthly-transactions" onClick={setMenuToggle}>
@@ -91,7 +91,7 @@ export default function Login() {
               <span className="button-icon">
                 <BiTimeFive />
               </span>
-              Transactions by month
+              Transactions by Date
             </button>
           </Link>
           <button type="button" onClick={submitLogout} className="neutral">

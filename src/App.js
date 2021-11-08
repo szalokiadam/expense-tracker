@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Error404 from "./components/Error404";
 import LoginError from "./components/LoginError";
 import LoadingScreen from "./components/LoadingScreen";
-import MonthlyTransactions from "./components/MonthlyTransactions";
+import TransactionsByDate from "./components/TransactionsByDate";
 import { Header, Footer } from "./components/HeaderFooter";
 import { loadStore } from "./components/Store";
 import { GlobalTransactions, LoggedIn } from "./components/_globalContext";
@@ -42,7 +42,7 @@ function App() {
               <GlobalTransactions.Provider value={transactionValues}>
                 <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
                 <Route path="/monthly-transactions">
-                  <MonthlyTransactions />
+                  <TransactionsByDate />
                 </Route>
               </GlobalTransactions.Provider>
               <Route path="*">

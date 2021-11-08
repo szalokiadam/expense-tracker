@@ -2,11 +2,13 @@ import React, { useReducer, useContext } from "react";
 import { BiEdit, BiSave, BiTrash } from "react-icons/bi";
 import "../resources/scss/Transactions.scss";
 import { GlobalTransactions } from "./_globalContext";
-
 import TransactionsList from "./TransactionsList";
+
+const MAX_TRANSACTIONS = 8;
 
 export default function Transactions() {
   const [editable, setEditable] = useReducer((editable) => !editable);
+  const maxElements = MAX_TRANSACTIONS;
 
   function clearAll() {
     setTransactions([]);
@@ -17,7 +19,9 @@ export default function Transactions() {
   return (
     <section className="transactions">
       <div className="transactions__header">
-        <p className="section-title">Transactions</p>
+        <p className="section-title">
+          Transactions (last {maxElements} elements)
+        </p>
         <div className="trans_buttons">
           {transactions.length > 0 &&
             (editable && transactions.length > 0 ? (
@@ -51,7 +55,7 @@ export default function Transactions() {
             ))}
         </div>
       </div>
-      <TransactionsList editable={editable} />
+      <TransactionsList editable={editable} maxElements={maxElements} />
     </section>
   );
 }

@@ -1,11 +1,11 @@
 import { useContext, useMemo, useState } from "react";
 import { dateString } from "../Utilities";
-import "../resources/scss/MonthlyTransactions.scss";
-import { DateRangeFn } from "./_globalContext";
+import "../resources/scss/TransactionsByDate.scss";
+import { DateRangeFn, GlobalTransactions } from "./_globalContext";
 import TransactionsList from "./TransactionsList";
 
 export default function MonthlyTransactions() {
-  const [dateRange, setDateRange] = useState(null);
+  const [dateRange, setDateRange] = useState([]);
 
   const dateRangeValue = useMemo(
     () => ({ dateRange, setDateRange }),
@@ -17,7 +17,7 @@ export default function MonthlyTransactions() {
       <DateRangeFn.Provider value={dateRangeValue}>
         <DateRange />
         <section className="transactions">
-          <TransactionsList filterFn={dateRange} />
+          <TransactionsList filteredTransactions={dateRange} />
         </section>
       </DateRangeFn.Provider>
     </div>
@@ -28,6 +28,7 @@ function DateRange() {
   const [startDate, setStartDate] = useState(dateString(today));
   const [endDate, setEndDate] = useState(dateString(today));
   const maxEnd = dateString(today);
+  const { transactions } = useContext(GlobalTransactions);
 
   const { setDateRange } = useContext(DateRangeFn);
 
@@ -41,8 +42,11 @@ function DateRange() {
     event.preventDefault();
     const start = new Date(startDate).getTime();
     const end = new Date(datePlusDay(endDate, 1)).getTime();
-    console.log(`start: ${startDate}\nend: ${endDate}`);
-    setDateRange(`(tr) => ${start} < tr.created && tr.created < ${end}`);
+
+    const newTransactions = transactions.filter(
+      (tr) => start < tr.created && tr.created < end
+    );
+    setDateRange(newTransactions);
   }
 
   return (
