@@ -40,12 +40,12 @@ function DateRange() {
 
   function selectDateRange(event) {
     event.preventDefault();
-    const start = new Date(startDate).getTime();
-    const end = new Date(datePlusDay(endDate, 1)).getTime();
+    const start = new Date(startDate).setHours(0, 0, 0, 0);
+    const end = new Date(datePlusDay(endDate, 1)).setHours(0, 0, 0, 0);
 
-    const newTransactions = transactions.filter(
-      (tr) => start < tr.created && tr.created < end
-    );
+    const newTransactions = transactions.filter((tr) => {
+      return start <= tr.created && tr.created <= end;
+    });
     setDateRange(newTransactions);
   }
 
