@@ -12,10 +12,7 @@ export default function TransactionsList({
   const { transactions, setTransactions } = useContext(GlobalTransactions);
   let newTransactions = filteredTransactions || transactions;
   newTransactions = maxElements
-    ? newTransactions.slice(
-        newTransactions.length - maxElements,
-        newTransactions.length
-      )
+    ? newTransactions.slice(-maxElements)
     : newTransactions;
   const endElement = React.createRef();
 
