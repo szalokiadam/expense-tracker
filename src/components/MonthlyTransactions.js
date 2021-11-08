@@ -1,13 +1,10 @@
 import { useContext, useMemo, useState } from "react";
-import { GlobalTransactions } from "./_globalContext";
 import { dateString } from "../Utilities";
 import "../resources/scss/MonthlyTransactions.scss";
 import { DateRangeFn } from "./_globalContext";
 import TransactionsList from "./TransactionsList";
 
 export default function MonthlyTransactions() {
-  const { transactions } = useContext(GlobalTransactions);
-
   const [dateRange, setDateRange] = useState(null);
 
   const dateRangeValue = useMemo(
@@ -27,23 +24,24 @@ export default function MonthlyTransactions() {
   );
 }
 function DateRange() {
-  const [startDate, setStartDate] = useState(dateString(todayPlusDay()));
-  const [endDate, setEndDate] = useState(dateString(todayPlusDay(1)));
-  const maxEnd = dateString(todayPlusDay(1));
+  const today = new Date();
+  const [startDate, setStartDate] = useState(dateString(today));
+  const [endDate, setEndDate] = useState(dateString(today));
+  const maxEnd = dateString(today);
 
   const { setDateRange } = useContext(DateRangeFn);
 
-  function todayPlusDay(number = 0) {
-    const date = new Date();
+  function datePlusDay(_date, number = 0) {
+    const date = new Date(_date);
     date.setDate(date.getDate() + number);
-    return dateString(date.getTime());
+    return date.getTime();
   }
 
   function selectDateRange(event) {
     event.preventDefault();
-    console.log(`start: ${startDate}\nend: ${endDate}`);
     const start = new Date(startDate).getTime();
-    const end = new Date(endDate).getTime();
+    const end = new Date(datePlusDay(endDate, 1)).getTime();
+    console.log(`start: ${startDate}\nend: ${endDate}`);
     setDateRange(`(tr) => ${start} < tr.created && tr.created < ${end}`);
   }
 
