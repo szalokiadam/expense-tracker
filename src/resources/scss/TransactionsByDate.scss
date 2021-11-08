@@ -4,8 +4,14 @@
   flex: 0 0 auto;
   form {
     label {
-      & + label {
-        margin-left: 10px;
+      margin: 5px 0;
+      flex: 1 1 100%;
+      @media ($breakpoint-mobile) {
+        flex: 1 1 30%;
+        margin: 0;
+        & + label {
+          margin-left: 10px;
+        }
       }
     }
   }
