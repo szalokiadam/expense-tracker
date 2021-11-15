@@ -1,16 +1,21 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { dateString } from "../Utilities";
-import { GlobalTransactions } from "./_globalContext";
 import "../resources/scss/TransactionsList.scss";
 import { BiTrashAlt } from "react-icons/bi";
 
-export default function TransactionsList({
+// REDUX
+import { connect } from "react-redux";
+import { deleteTransaction } from "../actions";
+
+function TransactionsList({
   editable = false,
   filteredTransactions = null,
   maxElements = null,
+  transactions,
+  deleteTransaction,
 }) {
-  const { transactions, setTransactions } = useContext(GlobalTransactions);
   let newTransactions = filteredTransactions || transactions;
+
   newTransactions = maxElements
     ? newTransactions.slice(-maxElements)
     : newTransactions;
@@ -21,10 +26,7 @@ export default function TransactionsList({
   }, [endElement]);
 
   function deleteItem(currentTransaction) {
-    const newTransactions = [...transactions].filter(
-      (transaction) => transaction !== currentTransaction
-    );
-    setTransactions([...newTransactions]);
+    deleteTransaction(currentTransaction);
   }
 
   return (
@@ -56,3 +58,15 @@ export default function TransactionsList({
     </ul>
   );
 }
+function mapStateToProps(state) {
+  return {
+    transactions: state.transactions,
+  };
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteTransaction: (tr) => dispatch(deleteTransaction(tr)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionsList);

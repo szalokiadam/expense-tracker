@@ -1,35 +1,35 @@
-import { useState, useContext } from "react";
-import { loadStore, saveStore } from "./Store";
+import { useState } from "react";
 import { checkPermission } from "./permissions";
 import "../resources/scss/Login.scss";
-import { LoggedIn } from "./_globalContext";
 import { BiLogOut, BiMoney, BiTimeFive } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { MenuOpener } from "./_globalContext";
+import { setLoggedIn, setUserName } from "../actions";
+import { connect } from "react-redux";
 
-export default function Login() {
+function Login({ parentCallback, loggedIn, setLogin, user, setUserName }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [valid, setValid] = useState(true);
-
-  const { login, setLogin } = useContext(LoggedIn);
-  const { setMenuToggle } = useContext(MenuOpener);
 
   function submitLogin(event) {
     event.preventDefault();
     const isValid = checkPermission({ username, password });
     if (isValid) {
       setValid(true);
-      setLogin(false);
-      saveStore("__login", [{ userName: username }]);
+      setLogin(true);
+      setMenuToggle();
+      setUserName(username);
     } else {
       setValid(false);
     }
   }
 
+  function setMenuToggle() {
+    parentCallback();
+  }
   const submitLogout = () => {
-    saveStore("__login", []);
-    setLogin(true);
+    setMenuToggle();
+    setLogin(false);
   };
   function loginPage() {
     return (
@@ -71,12 +71,10 @@ export default function Login() {
   }
 
   function profilePage() {
-    const userName = loadStore("__login")[0]?.userName;
-
     return (
       <div className="loginInner">
         <h2>Profile</h2>
-        <p>User: {userName}</p>
+        <p>User: {user}</p>
         <div className="buttons">
           <Link to="/" onClick={setMenuToggle}>
             <button type="button" className="neutral">
@@ -107,5 +105,20 @@ export default function Login() {
       </div>
     );
   }
-  return !login ? profilePage() : loginPage();
+  return loggedIn ? profilePage() : loginPage();
 }
+
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.loggedIn,
+    user: state.user,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLogin: (login) => dispatch(setLoggedIn(login)),
+    setUserName: (user) => dispatch(setUserName(user)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

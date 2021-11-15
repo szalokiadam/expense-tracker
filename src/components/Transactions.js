@@ -1,26 +1,23 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer } from "react";
 import { BiEdit, BiSave, BiTrash } from "react-icons/bi";
 import "../resources/scss/Transactions.scss";
-import { GlobalTransactions } from "./_globalContext";
 import TransactionsList from "./TransactionsList";
+// REDUX
+import { connect } from "react-redux";
+import { deleteTransactions } from "../actions";
 
-const MAX_TRANSACTIONS = 8;
-
-export default function Transactions() {
+function Transactions({ transactions, deleteAll }) {
   const [editable, setEditable] = useReducer((editable) => !editable);
-  const maxElements = MAX_TRANSACTIONS;
-
+  const maxTransactions = 8;
   function clearAll() {
-    setTransactions([]);
-    setEditable();
+    deleteAll();
   }
-  const { transactions, setTransactions } = useContext(GlobalTransactions);
 
   return (
     <section className="transactions">
       <div className="transactions__header">
         <p className="section-title">
-          Transactions (last {maxElements} elements)
+          Transactions (last {maxTransactions} elements)
         </p>
         <div className="trans_buttons">
           {transactions.length > 0 &&
@@ -55,7 +52,21 @@ export default function Transactions() {
             ))}
         </div>
       </div>
-      <TransactionsList editable={editable} maxElements={maxElements} />
+      <TransactionsList editable={editable} maxElements={maxTransactions} />
     </section>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    transactions: state.transactions,
+    maxTransactions: state.maxTransactions,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteAll: (tr) => dispatch(deleteTransactions(tr)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Transactions);

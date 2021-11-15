@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { GlobalTransactions } from "./_globalContext";
+import React from "react";
 import "../resources/scss/Watcher.scss";
 
-export default function Watcher() {
-  const { transactions } = useContext(GlobalTransactions);
+// REDUX
+import { connect } from "react-redux";
 
+function Watcher({ transactions }) {
   function getIncomeExpense() {
     let income = 0;
     let expense = 0;
@@ -35,3 +35,11 @@ export default function Watcher() {
     </section>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    transactions: state.transactions,
+  };
+}
+
+export default connect(mapStateToProps)(Watcher);

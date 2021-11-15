@@ -1,14 +1,21 @@
-import { useState, useContext, useReducer } from "react";
+import { useState, useReducer } from "react";
 import Modal from "react-modal";
 import { uniqueNumber } from "../Utilities";
 import style from "../resources/scss/NewTransaction.module.scss";
-import { GlobalTransactions } from "./_globalContext";
+import { newTransaction, getTransactions } from "../actions";
+// REDUX
+import { connect } from "react-redux";
 
-export default function NewTransaction() {
+function NewTransaction({
+  transactions,
+  maxTransactions,
+  onCreatePressed,
+  onLoadPage,
+  dispatch,
+}) {
   let [title, setTitle] = useState("");
   let [amount, setAmount] = useState("");
 
-  const { transactions, setTransactions } = useContext(GlobalTransactions);
   const [isOpen, toggleOpener] = useReducer((open) => !open, false);
 
   function addToTransactions(event) {
@@ -24,7 +31,7 @@ export default function NewTransaction() {
 
     setTitle("");
     setAmount("");
-    setTransactions([...transactions, data]);
+    onCreatePressed(data);
     toggleOpener();
   }
 
@@ -95,3 +102,18 @@ export default function NewTransaction() {
     </section>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    transactions: state.transactions,
+    maxTransactions: state.maxTransactions,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onCreatePressed: (tr) => dispatch(newTransaction(tr)),
+    onLoadPage: (tr) => dispatch(getTransactions(tr)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTransaction);

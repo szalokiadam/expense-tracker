@@ -1,36 +1,31 @@
-import { useContext, useMemo, useState } from "react";
+import { useState } from "react";
 import { dateString } from "../Utilities";
 import "../resources/scss/TransactionsByDate.scss";
-import { DateRangeFn, GlobalTransactions } from "./_globalContext";
 import TransactionsList from "./TransactionsList";
 
-export default function MonthlyTransactions() {
-  const [dateRange, setDateRange] = useState([]);
+// REDUX
+import { connect } from "react-redux";
 
-  const dateRangeValue = useMemo(
-    () => ({ dateRange, setDateRange }),
-    [dateRange]
-  );
+function TransactionsByDate({ transactions }) {
+  const [filteredTransactions, setFilteredTransactions] = useState([]);
 
+  function handleCallback(ttransactionsr) {
+    setFilteredTransactions([...transactions]);
+  }
   return (
     <div className="expense-tracker">
-      <DateRangeFn.Provider value={dateRangeValue}>
-        <DateRange />
-        <section className="transactions">
-          <TransactionsList filteredTransactions={dateRange} />
-        </section>
-      </DateRangeFn.Provider>
+      <DateRange transactions={transactions} parentCallback={handleCallback} />
+      <section className="transactions">
+        <TransactionsList filteredTransactions={filteredTransactions} />
+      </section>
     </div>
   );
 }
-function DateRange() {
+function DateRange({ transactions, parentCallback }) {
   const today = new Date();
   const [startDate, setStartDate] = useState(dateString(today));
   const [endDate, setEndDate] = useState(dateString(today));
   const maxEnd = dateString(today);
-  const { transactions } = useContext(GlobalTransactions);
-
-  const { setDateRange } = useContext(DateRangeFn);
 
   function datePlusDay(_date, number = 0) {
     const date = new Date(_date);
@@ -46,7 +41,7 @@ function DateRange() {
     const newTransactions = transactions.filter((tr) => {
       return start <= tr.created && tr.created <= end;
     });
-    setDateRange(newTransactions);
+    parentCallback(newTransactions);
   }
 
   return (
@@ -79,3 +74,11 @@ function DateRange() {
     </section>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    transactions: state.transactions,
+  };
+}
+
+export default connect(mapStateToProps)(TransactionsByDate);

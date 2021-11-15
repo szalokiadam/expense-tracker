@@ -1,60 +1,44 @@
-import { useState, useMemo, useEffect } from "react";
 import "./resources/scss/App.scss";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Error404 from "./components/Error404";
 import LoginError from "./components/LoginError";
-import LoadingScreen from "./components/LoadingScreen";
 import TransactionsByDate from "./components/TransactionsByDate";
 import { Header, Footer } from "./components/HeaderFooter";
-import { loadStore } from "./components/Store";
-import { GlobalTransactions, LoggedIn } from "./components/_globalContext";
 
-function App() {
-  const userName = loadStore("__login")[0]?.userName;
-  const [login, setLogin] = useState(!userName);
-  const [loading, setLoading] = useState(true);
-  const [transactions, setTransactions] = useState(loadStore(userName));
+// REDUX
+import { connect } from "react-redux";
 
-  const transactionValues = useMemo(
-    () => ({ transactions, setTransactions }),
-    [transactions]
-  );
-
-  const loginValues = useMemo(() => ({ login, setLogin }), [login]);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
-
+function App({ loggedIn }) {
   return (
     <>
       <div className="Background"></div>
       <div className="App">
-        {loading && <LoadingScreen />}
-        <LoggedIn.Provider value={loginValues}>
-          <Header />
-          <main>
-            <Switch>
-              {login && <LoginError />}
-              <Redirect exact from="/" to="/home" />
-              <GlobalTransactions.Provider value={transactionValues}>
-                <Route path="/home">{login ? <LoginError /> : <Home />}</Route>
-                <Route path="/monthly-transactions">
-                  <TransactionsByDate />
-                </Route>
-              </GlobalTransactions.Provider>
-              <Route path="*">
-                <Error404 />
-              </Route>
-            </Switch>
-          </main>
-          <Footer />
-        </LoggedIn.Provider>
+        <Header />
+        <main>
+          {!loggedIn && <Redirect to="/home" />}
+          <Switch>
+            <Redirect exact from="/" to="/home" />
+            <Route path="/home">{loggedIn ? <Home /> : <LoginError />}</Route>
+            <Route path="/monthly-transactions">
+              <TransactionsByDate />
+            </Route>
+            <Route path="*">
+              <Error404 />
+            </Route>
+          </Switch>
+        </main>
+        <Footer />
+        {/* </LoggedIn.Provider> */}
       </div>
     </>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    loggedIn: state.loggedIn,
+  };
+}
+
+export default connect(mapStateToProps)(App);
