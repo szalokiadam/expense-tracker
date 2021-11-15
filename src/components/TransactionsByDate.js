@@ -9,8 +9,8 @@ import { connect } from "react-redux";
 function TransactionsByDate({ transactions }) {
   const [filteredTransactions, setFilteredTransactions] = useState([]);
 
-  function handleCallback(ttransactionsr) {
-    setFilteredTransactions([...transactions]);
+  function handleCallback(tr) {
+    setFilteredTransactions([...tr]);
   }
   return (
     <div className="expense-tracker">
