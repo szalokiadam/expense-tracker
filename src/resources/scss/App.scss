@@ -45,6 +45,7 @@ input {
 }
 input {
   background: $background-color2;
+  text-align: left;
   &:focus {
     border-color: $primary;
     outline: 0;
