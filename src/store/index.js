@@ -11,7 +11,7 @@ const RootReducer = combineReducers({
   user,
 });
 const persistConfig = {
-  key: "root",
+  key: "expense-tracker",
   storage,
   stateReconciler: autoMergeLevel2,
 };

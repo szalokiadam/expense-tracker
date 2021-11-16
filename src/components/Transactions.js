@@ -11,6 +11,7 @@ function Transactions({ transactions, deleteAll }) {
   const maxTransactions = 8;
   function clearAll() {
     deleteAll();
+    setEditable();
   }
 
   return (

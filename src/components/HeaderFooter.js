@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "../resources/scss/HeaderFooter.scss";
-
-import Menu from "./Menu";
+import LoginContainer from "./LoginContainer";
 
 export function Header() {
   return (
@@ -9,7 +8,7 @@ export function Header() {
       <h1 className="title">
         <Link to="/">Expense Tracker</Link>
       </h1>
-      <Menu />
+      <LoginContainer />
     </header>
   );
 }

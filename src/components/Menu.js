@@ -1,36 +1,37 @@
-import { useReducer } from "react";
-import { BiUser as ProfileIcon } from "react-icons/bi";
-import { connect } from "react-redux";
-import Login from "./Login";
+import { MenuItem } from "./MenuItem";
+import { BiLogOut, BiMoney, BiTimeFive } from "react-icons/bi";
 
-function Menu({ loggedIn }) {
-  const [open, toggleOpener] = useReducer((open) => !open, false);
-
-  function handleCallback() {
-    toggleOpener();
+export default function Menu({ toggle, logout }) {
+  function setMenuToggle() {
+    toggle();
   }
+  function submitLogout() {
+    logout();
+  }
+
   return (
-    <div className="login-container">
-      {loggedIn ? (
-        ""
-      ) : (
-        <button className="register-button neutral">Register</button>
-      )}
-      <button className="login-button primary" onClick={toggleOpener}>
-        <span className="button-icon">
-          <ProfileIcon />
-        </span>
-        {loggedIn ? "Profile" : "Login"}
-      </button>
-      {open && <Login parentCallback={handleCallback} />}
+    <div className="buttons">
+      <MenuItem
+        linkTo="/"
+        action={setMenuToggle}
+        text="Latest Transactions"
+        icon={<BiMoney />}
+        buttonCls="neutral"
+      />
+      <MenuItem
+        linkTo="/monthly-transactions"
+        action={setMenuToggle}
+        text="Transactions by Date"
+        icon={<BiTimeFive />}
+        buttonCls="neutral"
+      />
+      <MenuItem
+        linkTo="/"
+        action={submitLogout}
+        text="Logout"
+        icon={<BiLogOut style={{ transform: "rotate(180deg)" }} />}
+        buttonCls="neutral"
+      />
     </div>
   );
 }
-
-function mapStateToProps(state) {
-  return {
-    loggedIn: state.loggedIn,
-  };
-}
-
-export default connect(mapStateToProps)(Menu);

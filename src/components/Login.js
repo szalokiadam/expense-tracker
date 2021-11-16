@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { checkPermission } from "./permissions";
 import "../resources/scss/Login.scss";
-import { BiLogOut, BiMoney, BiTimeFive } from "react-icons/bi";
-import { Link } from "react-router-dom";
 import { setLoggedIn, setUserName } from "../actions";
 import { connect } from "react-redux";
+import Menu from "./Menu";
 
 function Login({ parentCallback, loggedIn, setLogin, user, setUserName }) {
   const [username, setUsername] = useState("");
@@ -75,30 +74,7 @@ function Login({ parentCallback, loggedIn, setLogin, user, setUserName }) {
       <div className="loginInner">
         <h2>Profile</h2>
         <p>User: {user}</p>
-        <div className="buttons">
-          <Link to="/" onClick={setMenuToggle}>
-            <button type="button" className="neutral">
-              <span className="button-icon">
-                <BiMoney />
-              </span>
-              Latest Transactions
-            </button>
-          </Link>
-          <Link to="/monthly-transactions" onClick={setMenuToggle}>
-            <button type="button" className="neutral">
-              <span className="button-icon">
-                <BiTimeFive />
-              </span>
-              Transactions by Date
-            </button>
-          </Link>
-          <button type="button" onClick={submitLogout} className="neutral">
-            <span className="button-icon">
-              <BiLogOut style={{ transform: "rotate(180deg)" }} />
-            </span>
-            Logout
-          </button>
-        </div>
+        <Menu toggle={setMenuToggle} logout={submitLogout} />
         <span className="version">
           version: {process.env.REACT_APP_VERSION}
         </span>
