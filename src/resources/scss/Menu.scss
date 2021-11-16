@@ -5,8 +5,9 @@
   flex-flow: column;
   justify-content: stretch;
   align-items: stretch;
+  flex: 1 1 50%;
+  width: 220px;
   background: $background-color2;
-  height: 100vh;
   padding: 20px 15px;
   box-sizing: border-box;
   border-radius: 10px 0 0 10px;
@@ -54,10 +55,13 @@
 }
 
 .Menu-Modal {
-  position: absolute;
+  display: flex;
+  flex-flow: column;
+  position: fixed;
   right: 0;
   top: 0px;
-  width: 220px;
+  bottom: 0;
+
   &.ReactModal__Content {
     opacity: 0;
     transform: translateX(110%);
