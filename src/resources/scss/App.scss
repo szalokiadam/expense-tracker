@@ -10,6 +10,7 @@ body {
   color: $font-color;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  outline: 0;
 }
 .App {
   position: fixed;
