@@ -49,7 +49,7 @@ function DateRange({ transactions, parentCallback }) {
       <p>Select Date Range</p>
       <form onSubmit={selectDateRange}>
         <label>
-          <span>Star Date:</span>
+          <span>Start Date:</span>
           <input
             type="date"
             value={startDate}

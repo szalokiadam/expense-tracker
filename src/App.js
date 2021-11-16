@@ -29,7 +29,6 @@ function App({ loggedIn }) {
           </Switch>
         </main>
         <Footer />
-        {/* </LoggedIn.Provider> */}
       </div>
     </>
   );
