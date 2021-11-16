@@ -8,6 +8,8 @@ input {
 }
 body {
   color: $font-color;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 .App {
   position: fixed;
@@ -22,8 +24,6 @@ body {
   align-items: flex-start;
   color: $font-color;
   background: $background-color;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
   main {
     width: 100%;
     flex: 1 1 50%;
