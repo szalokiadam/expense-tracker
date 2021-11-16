@@ -1,18 +1,12 @@
 import { useState, useReducer } from "react";
 import Modal from "react-modal";
 import { uniqueNumber } from "../Utilities";
-import style from "../resources/scss/NewTransaction.module.scss";
+import "../resources/scss/NewTransaction.scss";
 import { newTransaction, getTransactions } from "../actions";
 // REDUX
 import { connect } from "react-redux";
 
-function NewTransaction({
-  transactions,
-  maxTransactions,
-  onCreatePressed,
-  onLoadPage,
-  dispatch,
-}) {
+function NewTransaction({ onCreatePressed }) {
   let [title, setTitle] = useState("");
   let [amount, setAmount] = useState("");
 
@@ -36,16 +30,17 @@ function NewTransaction({
   }
 
   return (
-    <section className={style.addNewItem}>
+    <section className="addNewItem">
       <button className="primary" type="submit" onClick={toggleOpener}>
         Add new item
       </button>
       <Modal
+        // closeTimeoutMS={500}
         isOpen={isOpen}
         shouldCloseOnOverlayClick={true}
         shouldCloseOnEsc={true}
         onRequestClose={toggleOpener}
-        className={style.addNewItem}
+        className="addNewItem"
         ariaHideApp={false}
         style={{
           overlay: {
@@ -105,7 +100,6 @@ function NewTransaction({
 
 const mapStateToProps = (state) => {
   return {
-    transactions: state.transactions,
     maxTransactions: state.maxTransactions,
   };
 };

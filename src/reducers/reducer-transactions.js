@@ -15,7 +15,6 @@ const transactions = (state = [], action) => {
     }
     case SET_TRANSACTIONS: {
       const transaction = payload;
-      debugger;
       return transaction;
     }
     case DELETE_TRANSACTION: {

@@ -1,0 +1,25 @@
+@import "./variables";
+
+.login-container {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  button {
+    appearance: none;
+    border: 0;
+    color: $light-grey;
+    padding: 5px 10px;
+    margin-left: 10px;
+    &.register-button {
+      &:active {
+        background: $background-color2;
+      }
+    }
+    @media ($breakpoint-mobile) {
+      padding: 10px 20px;
+    }
+  }
+}

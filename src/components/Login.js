@@ -3,85 +3,64 @@ import { checkPermission } from "./permissions";
 import "../resources/scss/Login.scss";
 import { setLoggedIn, setUserName } from "../actions";
 import { connect } from "react-redux";
-import Menu from "./Menu";
+import { useHistory } from "react-router-dom";
 
-function Login({ parentCallback, loggedIn, setLogin, user, setUserName }) {
+function Login({ setLogin, setUserName }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [valid, setValid] = useState(true);
+  const history = useHistory();
 
   function submitLogin(event) {
     event.preventDefault();
     const isValid = checkPermission({ username, password });
+
     if (isValid) {
       setValid(true);
       setLogin(true);
-      setMenuToggle();
+      history.push("/");
       setUserName(username);
     } else {
       setValid(false);
     }
   }
 
-  function setMenuToggle() {
-    parentCallback();
-  }
-  const submitLogout = () => {
-    setMenuToggle();
-    setLogin(false);
-  };
-  function loginPage() {
-    return (
-      <div className="loginInner loginBox">
-        <h2>Login</h2>
-        <span className="error">{!valid && "Username/password invalid"}</span>
-        <form onSubmit={submitLogin}>
-          <label>
-            <span>User name:</span>
-            <input
-              name="username"
-              type="text"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-                setValid(true);
-              }}
-              autoFocus={true}
-            />
-          </label>
-          <label>
-            <span>Password:</span>
-            <input
-              name="password"
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setValid(true);
-              }}
-            />
-          </label>
-          <button type="submit" className="primary">
-            Login
-          </button>
-        </form>
-      </div>
-    );
-  }
-
-  function profilePage() {
-    return (
-      <div className="loginInner">
-        <h2>Profile</h2>
-        <p>User: {user}</p>
-        <Menu toggle={setMenuToggle} logout={submitLogout} />
-        <span className="version">
-          version: {process.env.REACT_APP_VERSION}
-        </span>
-      </div>
-    );
-  }
-  return loggedIn ? profilePage() : loginPage();
+  return (
+    <div className="loginInner loginBox">
+      <h2>Login</h2>
+      <span className="error">{!valid && "Username/password invalid"}</span>
+      <form onSubmit={submitLogin}>
+        <label>
+          <span>User name:</span>
+          <input
+            name="username"
+            type="text"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+              setValid(true);
+            }}
+            autoFocus={true}
+          />
+        </label>
+        <label>
+          <span>Password:</span>
+          <input
+            name="password"
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setValid(true);
+            }}
+          />
+        </label>
+        <button type="submit" className="primary">
+          Login
+        </button>
+      </form>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {

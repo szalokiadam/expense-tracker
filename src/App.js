@@ -8,6 +8,7 @@ import { Header, Footer } from "./components/HeaderFooter";
 
 // REDUX
 import { connect } from "react-redux";
+import Login from "./components/Login";
 
 function App({ loggedIn }) {
   return (
@@ -22,6 +23,9 @@ function App({ loggedIn }) {
             <Route path="/home">{loggedIn ? <Home /> : <LoginError />}</Route>
             <Route path="/monthly-transactions">
               <TransactionsByDate />
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
             <Route path="*">
               <Error404 />
