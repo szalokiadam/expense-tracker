@@ -1,0 +1,37 @@
+@import "./variables";
+
+.balance-range {
+  .range-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .range-income,
+  .range-expense {
+    height: 5px;
+  }
+  .range-income {
+    flex: 0 0 auto;
+    background: $dark-green;
+    position: relative;
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: -3px;
+      bottom: -3px;
+      right: -5px;
+      width: 10px;
+      background: $background-color2;
+      border-radius: 3px;
+    }
+  }
+  .range-expense {
+    flex: 1 1 0px;
+    background: $dark-red;
+  }
+}

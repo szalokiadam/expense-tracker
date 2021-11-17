@@ -1,4 +1,5 @@
 import React from "react";
+import Range from "./Range";
 import "../resources/scss/Watcher.scss";
 
 // REDUX
@@ -21,18 +22,21 @@ function Watcher({ transactions }) {
   const [income, expense] = getIncomeExpense();
 
   return (
-    <section className="watcher">
-      <div className="watcher__container">
-        <div>
-          <span>Income</span>
-          <span className="amount income">{income}</span>
+    <>
+      <section className="watcher">
+        <div className="watcher__container">
+          <div>
+            <span>Income</span>
+            <span className="amount income">{income}</span>
+          </div>
+          <div>
+            <span>Expense</span>
+            <span className="amount expense">{expense}</span>
+          </div>
         </div>
-        <div>
-          <span>Expense</span>
-          <span className="amount expense">{expense}</span>
-        </div>
-      </div>
-    </section>
+      </section>
+      <Range expense={expense} income={income} />
+    </>
   );
 }
 
