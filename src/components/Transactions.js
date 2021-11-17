@@ -29,7 +29,6 @@ function Transactions({ transactions, deleteAll }) {
                   className="trans_save"
                   onClick={clearAll}
                 >
-                  Clear All
                   <BiTrash />
                 </button>
                 <button
@@ -37,7 +36,6 @@ function Transactions({ transactions, deleteAll }) {
                   className="trans_save"
                   onClick={setEditable}
                 >
-                  Save
                   <BiSave />
                 </button>
               </>
@@ -48,7 +46,6 @@ function Transactions({ transactions, deleteAll }) {
                   className="trans_edit"
                   onClick={setEditable}
                 >
-                  Edit
                   <BiEdit />
                 </button>
               </>

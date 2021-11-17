@@ -38,16 +38,18 @@ function TransactionsList({
             key={transaction.id}
             className={transaction.amount < 0 ? "negative" : "positive"}
           >
-            <span className={"trans_date"}>{date}</span>
-            <span className={"trans_title"}>{transaction.title}</span>
+            <div>
+              <span className={"trans_date"}>{date}</span>
+              <span className={"trans_title"}>{transaction.title}</span>
+            </div>
             <span className={"trans_amount"}>{transaction.amount}</span>
             {editable && (
               <>
                 <button
+                  title="Delete"
                   className={"trans_delete"}
                   onClick={() => deleteItem(transaction)}
                 >
-                  Delete
                   <BiTrashAlt />
                 </button>
               </>

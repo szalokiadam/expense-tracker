@@ -14,7 +14,6 @@
     justify-content: flex-start;
     align-items: center;
     background: $background-color2;
-    min-height: 35px;
     border: 1px solid transparent;
     border-radius: 3px;
     margin: 0 0 10px;
@@ -33,19 +32,19 @@
       min-height: 0;
       border: 0;
     }
+    > div {
+      flex: 1 1 60%;
+    }
   }
 
   .trans_date {
-    flex: 1 0 100%;
-    // border-right: 1px solid $dark-grey2;
-    // margin-right: 5px;
-    // padding-right: 5px;
+    display: block;
     margin-bottom: 5px;
     box-sizing: border-box;
     font-size: 80%;
   }
   .trans_title {
-    flex: 1 1 60%;
+    display: block;
   }
   .trans_amount {
     flex: 0 0 auto;
