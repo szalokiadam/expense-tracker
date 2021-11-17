@@ -1,8 +1,14 @@
 @import "./variables";
 
 .loginInner {
-  padding: 15px;
   box-sizing: border-box;
+  flex: 1 1 50%;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: stretch;
 
   h2 {
     margin: 0;
