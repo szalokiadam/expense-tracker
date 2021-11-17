@@ -1,17 +1,13 @@
 @import "./variables";
 
-header,
-footer {
-  flex: 0 0 auto;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-}
 header {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  flex: 0 0 auto;
+  width: 100%;
+  box-sizing: border-box;
   .title {
     display: flex;
     flex-flow: row nowrap;
