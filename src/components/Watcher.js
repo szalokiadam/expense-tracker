@@ -9,6 +9,7 @@ function Watcher({ transactions }) {
   function getIncomeExpense() {
     let income = 0;
     let expense = 0;
+    let total = 0;
     transactions.forEach((tr) => {
       if (tr.amount > 0) {
         income += tr.amount;
@@ -16,10 +17,11 @@ function Watcher({ transactions }) {
         expense -= tr.amount;
       }
     });
-    return [income, expense];
+    total = income + expense;
+    return [income, expense, total];
   }
 
-  const [income, expense] = getIncomeExpense();
+  const [income, expense, total] = getIncomeExpense();
 
   return (
     <>
@@ -28,6 +30,10 @@ function Watcher({ transactions }) {
           <div>
             <span>Income</span>
             <span className="amount income">{income}</span>
+          </div>
+          <div>
+            <span>Total</span>
+            <span className="amount total">{total}</span>
           </div>
           <div>
             <span>Expense</span>

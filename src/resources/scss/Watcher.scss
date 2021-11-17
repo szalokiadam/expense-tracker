@@ -34,6 +34,9 @@
       &.expense {
         color: $dark-red;
       }
+      &.total {
+        font-size: 20px;
+      }
     }
     @media ($breakpoint-tablet) {
       padding: 15px 10px;

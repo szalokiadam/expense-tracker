@@ -8,7 +8,7 @@ import "../resources/scss/Home.scss";
 export default function Home() {
   return (
     <div className="expense-tracker">
-      <Balance />
+      {/* <Balance /> */}
       <Watcher />
       <Transactions />
       <NewTransaction />
