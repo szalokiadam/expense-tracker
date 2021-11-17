@@ -47,7 +47,8 @@ function TransactionsList({
                   className={"trans_delete"}
                   onClick={() => deleteItem(transaction)}
                 >
-                  Delete <BiTrashAlt />
+                  Delete
+                  <BiTrashAlt />
                 </button>
               </>
             )}

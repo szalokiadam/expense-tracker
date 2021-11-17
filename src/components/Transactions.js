@@ -29,14 +29,16 @@ function Transactions({ transactions, deleteAll }) {
                   className="trans_save"
                   onClick={clearAll}
                 >
-                  Clear All <BiTrash />
+                  Clear All
+                  <BiTrash />
                 </button>
                 <button
                   title="Save"
                   className="trans_save"
                   onClick={setEditable}
                 >
-                  Save <BiSave />
+                  Save
+                  <BiSave />
                 </button>
               </>
             ) : (
