@@ -1,6 +1,6 @@
 import {
   NEW_TRANSACTION,
-  SET_TRANSACTIONS,
+  UPDATE_TRANSACTION,
   DELETE_TRANSACTION,
   DELETE_TRANSACTIONS,
 } from "../actions";
@@ -8,14 +8,24 @@ import {
 const transactions = (state = [], action) => {
   const { type, payload } = action;
 
+  function sort(transactions) {
+    return transactions.sort((a, b) => a.created - b.created);
+  }
   switch (type) {
     case NEW_TRANSACTION: {
       const transaction = payload;
-      return state.concat(transaction);
+      const newTransactions = [...state, transaction];
+      return sort(newTransactions);
     }
-    case SET_TRANSACTIONS: {
-      const transaction = payload;
-      return transaction;
+    case UPDATE_TRANSACTION: {
+      const newTransactions = state.map((tr) => {
+        if (tr.id === payload.id) {
+          return payload;
+        } else {
+          return tr;
+        }
+      });
+      return sort(newTransactions);
     }
     case DELETE_TRANSACTION: {
       const transaction = payload;

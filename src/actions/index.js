@@ -1,7 +1,6 @@
-//TRANSACTIONS
+// TRANSACTIONS
 export const NEW_TRANSACTION = "NEW_TRANSACTION";
-export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
-export const SET_TRANSACTIONS = "SET_TRANSACTIONS";
+export const UPDATE_TRANSACTION = "UPDATE_TRANSACTION";
 export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
 export const DELETE_TRANSACTIONS = "DELETE_TRANSACTIONS";
 
@@ -10,13 +9,8 @@ export const newTransaction = (transaction) => ({
   payload: transaction,
 });
 
-export const getTransactions = (transactions) => ({
-  type: GET_TRANSACTIONS,
-  payload: transactions,
-});
-
-export const setTransactions = (transaction) => ({
-  type: SET_TRANSACTIONS,
+export const updateTransaction = (transaction) => ({
+  type: UPDATE_TRANSACTION,
   payload: transaction,
 });
 
@@ -30,7 +24,7 @@ export const deleteTransactions = (transactions) => ({
   payload: transactions,
 });
 
-//LOGIN
+// LOGIN
 export const SET_LOGGED_IN = "SET_LOGGED_IN";
 
 export const setLoggedIn = (login) => ({
@@ -38,10 +32,18 @@ export const setLoggedIn = (login) => ({
   payload: login,
 });
 
-//USER NAME
+// USER NAME
 export const USER_NAME = "USER_NAME";
 
 export const setUserName = (user) => ({
   type: USER_NAME,
   payload: user,
+});
+
+// NEW/EDIT TRANSACTION MODAL OPENER
+export const TOGGLE_TRANSACTION_MODAL = "TOGGLE_TRANSACTION_MODAL";
+
+export const toggleTransactionModal = ({ open, edit }) => ({
+  type: TOGGLE_TRANSACTION_MODAL,
+  payload: { open, edit },
 });

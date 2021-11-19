@@ -9,12 +9,16 @@
   @extend form;
   form {
     label {
+      flex: 1 1 60%;
       margin: 10px 0 0;
       > span {
         display: none;
       }
-      &:not(:first-of-type) {
-        margin-left: 5px;
+    }
+    .neutral {
+      &:active,
+      &:focus {
+        background: $background-color2;
       }
     }
   }

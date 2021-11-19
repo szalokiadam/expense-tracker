@@ -25,3 +25,11 @@ export function dateString(_date, format) {
       .replace(/d/i, `${day}`);
   return `${year}-${month}-${day}`;
 }
+export function dateTimeString(_date) {
+  const date = dateString(_date);
+  const [hours, minutes] = [
+    toTwoDigit(_date.getHours()),
+    toTwoDigit(_date.getMinutes()),
+  ];
+  return [date, `${hours}:${minutes}`];
+}

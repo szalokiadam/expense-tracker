@@ -17,7 +17,7 @@
     border: 1px solid transparent;
     border-radius: 3px;
     margin: 0 0 10px;
-    padding: 5px 10px;
+    padding: 5px 5px 5px 10px;
     font-size: 14px;
     border-right: 5px solid transparent;
     &.positive {
@@ -34,6 +34,33 @@
     }
     > div {
       flex: 1 1 60%;
+    }
+  }
+  button {
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    border: none;
+    background: transparent;
+    margin-left: 5px;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+    color: $white;
+    border-radius: 50%;
+  }
+
+  .trans_show-more {
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    background: lighten($background-color2, 1%);
+    &:active,
+    &:focus {
+      background: lighten($background-color2, 5%);
     }
   }
 
