@@ -17,7 +17,7 @@ function Watcher({ transactions }) {
         expense -= tr.amount;
       }
     });
-    total = income + expense;
+    total = income - expense;
     return [income, expense, total];
   }
 
