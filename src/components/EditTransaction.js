@@ -89,7 +89,7 @@ function EditTransaction({
         <label>
           <span>Title:</span>
           <input
-            autoFocus={true}
+            autoFocus={!edit}
             placeholder="Item name"
             name="title"
             type="text"
