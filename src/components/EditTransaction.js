@@ -75,7 +75,7 @@ function EditTransaction({
         <label>
           <span>Date:</span>
           <input
-            autoFocus={true}
+            autoFocus={false}
             placeholder="Date"
             name="title"
             type="datetime-local"
