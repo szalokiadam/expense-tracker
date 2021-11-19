@@ -109,6 +109,8 @@ function EditTransaction({
             onChange={(e) => {
               setAmount(e.target.value);
             }}
+            min={-999999}
+            max={999999}
           />
         </label>
         {edit ? (
