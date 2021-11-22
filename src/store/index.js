@@ -3,13 +3,20 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
-import { transactions, loggedIn, user, transactionModal } from "../reducers";
+import {
+  transactions,
+  loggedIn,
+  user,
+  transactionModal,
+  settings,
+} from "../reducers";
 
 const RootReducer = combineReducers({
   transactions,
   loggedIn,
   user,
   transactionModal,
+  settings,
 });
 const persistConfig = {
   key: "expense-tracker",

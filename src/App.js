@@ -22,11 +22,11 @@ function App({ loggedIn }) {
           <Switch>
             <Redirect exact from="/" to="/home" />
             <Route path="/home">{loggedIn ? <Home /> : <LoginError />}</Route>
+            <Route path="/login">
+              {loggedIn ? <Redirect to="/home" /> : <Login />}
+            </Route>
             <Route path="/monthly-transactions">
               <TransactionsByDate />
-            </Route>
-            <Route path="/login">
-              {!loggedIn ? <Login /> : <Redirect to="/home" />}
             </Route>
             <Route path="/settings">
               <Settings />

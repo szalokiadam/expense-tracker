@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { dateString } from "../Utilities";
 import "../resources/scss/TransactionsByDate.scss";
 import TransactionsList from "./TransactionsList";
@@ -29,15 +29,11 @@ function DateRange({ transactions, parentCallback }) {
   const [endDate, setEndDate] = useState(dateString(today));
   const maxEnd = dateString(today);
 
-  const memoizedParentCallback = useCallback(() => {
+  useEffect(() => {
     if (firstCall) {
       const newTransactions = filteredTransactions();
       parentCallback(newTransactions);
     }
-  }, []);
-
-  useEffect(() => {
-    memoizedParentCallback();
   }, [transactions]);
 
   function datePlusDay(_date, number = 0) {
@@ -63,7 +59,7 @@ function DateRange({ transactions, parentCallback }) {
 
   return (
     <section className="dateRange">
-      <p>Select Date Range</p>
+      <p className="section-title">Select Date Range</p>
       <form onSubmit={selectDateRange}>
         <label>
           <span>Start Date:</span>

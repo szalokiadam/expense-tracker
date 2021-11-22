@@ -47,3 +47,11 @@ export const toggleTransactionModal = ({ open, edit }) => ({
   type: TOGGLE_TRANSACTION_MODAL,
   payload: { open, edit },
 });
+
+// SETTINGS
+export const SET_SETTINGS = "SET_SETTINGS";
+
+export const setSettings = (settings) => ({
+  type: SET_SETTINGS,
+  payload: settings,
+});

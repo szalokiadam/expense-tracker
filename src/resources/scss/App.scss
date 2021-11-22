@@ -32,7 +32,7 @@ body {
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
     overflow: hidden;
     padding: 0 15px;
     box-sizing: border-box;
@@ -41,7 +41,8 @@ body {
   }
 }
 button,
-input {
+input,
+select {
   box-sizing: border-box;
   padding: 5px 10px;
   font-size: 14px;
@@ -49,7 +50,8 @@ input {
   border-radius: 3px;
   color: $font-color;
 }
-input {
+input,
+select {
   background: $background-color2;
   text-align: left;
   &:focus {
@@ -121,6 +123,20 @@ a {
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
   z-index: 0;
+}
+.ReactModal__Content-base {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: $dark-grey3;
+  border-radius: 5px;
+  border: 1px solid $dark-grey2;
+  outline: none;
+  padding: 15px;
+  width: calc(100% - 30px);
+  max-width: 400px;
+  box-sizing: border-box;
 }
 
 // .ReactModal__Content {

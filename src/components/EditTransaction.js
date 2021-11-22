@@ -113,21 +113,23 @@ function EditTransaction({
             max={999999}
           />
         </label>
-        {edit ? (
-          <>
-            <button className="primary" type="submit">
-              Save
-            </button>
+        <div className="buttons-container">
+          {edit ? (
+            <>
+              <button className="primary" type="submit">
+                Save
+              </button>
 
-            <button className="neutral" type="button" onClick={deleteItem}>
-              Delete
+              <button className="neutral" type="button" onClick={deleteItem}>
+                Delete
+              </button>
+            </>
+          ) : (
+            <button className="primary" type="submit">
+              Add to list
             </button>
-          </>
-        ) : (
-          <button className="primary" type="submit">
-            Add to list
-          </button>
-        )}
+          )}
+        </div>
       </form>
     </>
   );

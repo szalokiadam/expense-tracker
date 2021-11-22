@@ -1,10 +1,10 @@
 import React from "react";
 import "../resources/scss/Transactions.scss";
 import TransactionsList from "./TransactionsList";
+// REDUX
+import { connect } from "react-redux";
 
-export default function Transactions() {
-  const maxTransactions = 5;
-
+function Transactions({ maxTransactions }) {
   return (
     <section className="transactions">
       <div className="transactions__header">
@@ -16,3 +16,10 @@ export default function Transactions() {
     </section>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    maxTransactions: state.settings?.maxTransactions,
+  };
+};
+
+export default connect(mapStateToProps)(Transactions);

@@ -15,13 +15,9 @@ function EditTransactionModal({ toggleModal, open, edit }) {
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
       onRequestClose={toggleOpener}
-      className="NewItem-Modal"
+      overlayClassName="NewItem-Modal-Overlay"
+      className="NewItem-Modal-Content"
       ariaHideApp={false}
-      style={{
-        overlay: {
-          backgroundColor: "rgba(238, 238, 238, 0.7)",
-        },
-      }}
     >
       <EditTransaction edit={edit} />
     </Modal>
