@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "../resources/scss/HeaderFooter.scss";
 import LoginContainer from "./LoginContainer";

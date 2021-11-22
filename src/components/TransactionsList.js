@@ -2,17 +2,18 @@ import React, { useEffect } from "react";
 import { dateString } from "../Utilities";
 import "../resources/scss/TransactionsList.scss";
 import { BiChevronRight } from "react-icons/bi";
+import EditTransactionModal from "./EditTransactionModal";
 
 // REDUX
 import { connect } from "react-redux";
 import { toggleTransactionModal } from "../actions";
 
 function TransactionsList({
-  editable = false,
   filteredTransactions = null,
   maxElements = null,
   transactions,
   toggleModal,
+  transactionModal,
 }) {
   let newTransactions = filteredTransactions || transactions;
 
@@ -20,6 +21,10 @@ function TransactionsList({
     ? newTransactions.slice(-maxElements)
     : newTransactions;
   const endElement = React.createRef();
+
+  useEffect(() => {
+    toggleModal({ open: false });
+  }, [toggleModal]);
 
   useEffect(() => {
     endElement.current.scrollIntoView();
@@ -45,22 +50,22 @@ function TransactionsList({
               </div>
               <span className={"trans_amount"}>{transaction.amount}</span>
 
-              {editable && (
-                <>
-                  <button
-                    title="Edit"
-                    className={"trans_show-more"}
-                    onClick={() => toggleOpener(transaction)}
-                  >
-                    <BiChevronRight />
-                  </button>
-                </>
-              )}
+              <button
+                title="Edit"
+                className={"trans_show-more"}
+                onClick={() => toggleOpener(transaction)}
+              >
+                <BiChevronRight />
+              </button>
             </li>
           );
         })}
         <li className="dummy" ref={endElement}></li>
       </ul>
+      <EditTransactionModal
+        open={transactionModal.open}
+        edit={transactionModal.edit}
+      />
     </>
   );
 }

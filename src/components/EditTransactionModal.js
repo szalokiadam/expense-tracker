@@ -15,25 +15,11 @@ function EditTransactionModal({ toggleModal, open, edit }) {
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
       onRequestClose={toggleOpener}
-      className="addNewItem"
+      className="NewItem-Modal"
       ariaHideApp={false}
       style={{
         overlay: {
           backgroundColor: "rgba(238, 238, 238, 0.7)",
-        },
-        content: {
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-          background: "#282828",
-          borderRadius: "5px",
-          border: "1px solid #424242",
-          outline: "none",
-          padding: "20px",
-          width: "calc(100% - 30px)",
-          maxWidth: "400px",
-          boxSizing: "border-box",
         },
       }}
     >

@@ -1,13 +1,9 @@
 import React from "react";
 import "../resources/scss/Transactions.scss";
 import TransactionsList from "./TransactionsList";
-// REDUX
-import { connect } from "react-redux";
-import { deleteTransactions } from "../actions";
 
-function Transactions({ transactions, deleteAll }) {
-  const editable = true;
-  const maxTransactions = 8;
+export default function Transactions() {
+  const maxTransactions = 5;
 
   return (
     <section className="transactions">
@@ -16,21 +12,7 @@ function Transactions({ transactions, deleteAll }) {
           Transactions (last {maxTransactions} elements)
         </p>
       </div>
-      <TransactionsList editable={editable} maxElements={maxTransactions} />
+      <TransactionsList maxElements={maxTransactions} />
     </section>
   );
 }
-
-const mapStateToProps = (state) => {
-  return {
-    transactions: state.transactions,
-    maxTransactions: state.maxTransactions,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteAll: (tr) => dispatch(deleteTransactions(tr)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Transactions);

@@ -9,6 +9,7 @@ import { Header, Footer } from "./components/HeaderFooter";
 // REDUX
 import { connect } from "react-redux";
 import Login from "./components/Login";
+import Settings from "./components/Settings";
 
 function App({ loggedIn }) {
   return (
@@ -25,7 +26,10 @@ function App({ loggedIn }) {
               <TransactionsByDate />
             </Route>
             <Route path="/login">
-              <Login />
+              {!loggedIn ? <Login /> : <Redirect to="/home" />}
+            </Route>
+            <Route path="/settings">
+              <Settings />
             </Route>
             <Route path="*">
               <Error404 />

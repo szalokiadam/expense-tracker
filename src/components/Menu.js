@@ -1,5 +1,5 @@
 import { MenuItem } from "./MenuItem";
-import { BiLogOut, BiMoney, BiTimeFive, BiX } from "react-icons/bi";
+import { BiLogOut, BiMoney, BiTimeFive, BiX, BiCog } from "react-icons/bi";
 import "../resources/scss/Menu.scss";
 import { setLoggedIn } from "../actions";
 import { connect } from "react-redux";
@@ -37,6 +37,13 @@ function Menu({ toggle, setLogin }) {
           action={setMenuToggle}
           text="Transactions by Date"
           icon={<BiTimeFive />}
+          buttonCls="neutral"
+        />
+        <MenuItem
+          linkTo="/settings"
+          action={setMenuToggle}
+          text="Settings"
+          icon={<BiCog />}
           buttonCls="neutral"
         />
         <MenuItem

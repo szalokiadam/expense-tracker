@@ -2,27 +2,17 @@ import { toggleTransactionModal } from "../actions";
 import "../resources/scss/NewTransaction.scss";
 // REDUX
 import { connect } from "react-redux";
-import { useEffect } from "react";
-import EditTransactionModal from "./EditTransactionModal";
 
-function NewTransaction({ transactionModal, toggleModal }) {
+function NewTransaction({ toggleModal }) {
   function toggleOpener() {
     toggleModal({ open: true, edit: false });
   }
-
-  useEffect(() => {
-    toggleModal({ open: false });
-  }, [toggleModal]);
 
   return (
     <section className="addNewItem">
       <button className="primary" type="submit" onClick={toggleOpener}>
         Add new item
       </button>
-      <EditTransactionModal
-        open={transactionModal.open}
-        edit={transactionModal.edit}
-      />
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { dateString } from "../Utilities";
 import "../resources/scss/TransactionsByDate.scss";
 import TransactionsList from "./TransactionsList";
@@ -12,6 +12,7 @@ function TransactionsByDate({ transactions }) {
   function handleCallback(tr) {
     setFilteredTransactions([...tr]);
   }
+
   return (
     <div className="expense-tracker">
       <DateRange transactions={transactions} parentCallback={handleCallback} />
@@ -22,10 +23,22 @@ function TransactionsByDate({ transactions }) {
   );
 }
 function DateRange({ transactions, parentCallback }) {
+  const [firstCall, setFirstCall] = useState(false);
   const today = new Date();
   const [startDate, setStartDate] = useState(dateString(today));
   const [endDate, setEndDate] = useState(dateString(today));
   const maxEnd = dateString(today);
+
+  const memoizedParentCallback = useCallback(() => {
+    if (firstCall) {
+      const newTransactions = filteredTransactions();
+      parentCallback(newTransactions);
+    }
+  }, []);
+
+  useEffect(() => {
+    memoizedParentCallback();
+  }, [transactions]);
 
   function datePlusDay(_date, number = 0) {
     const date = new Date(_date);
@@ -35,13 +48,17 @@ function DateRange({ transactions, parentCallback }) {
 
   function selectDateRange(event) {
     event.preventDefault();
+    const newTransactions = filteredTransactions();
+    setFirstCall(true);
+    parentCallback(newTransactions);
+  }
+
+  function filteredTransactions() {
     const start = new Date(startDate).setHours(0, 0, 0, 0);
     const end = new Date(datePlusDay(endDate, 1)).setHours(0, 0, 0, 0);
-
-    const newTransactions = transactions.filter((tr) => {
-      return start <= tr.created && tr.created <= end;
+    return transactions.filter((tr) => {
+      return start <= tr.created && tr.created < end;
     });
-    parentCallback(newTransactions);
   }
 
   return (

@@ -2,6 +2,11 @@
 
 .transactions__list {
   flex: 1 1 50%;
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
+  align-items: stretch;
+  row-gap: 10px;
   overflow: auto;
   padding: 0 5px 0 0;
   margin: 10px 0 0;
@@ -16,7 +21,6 @@
     background: $background-color2;
     border: 1px solid transparent;
     border-radius: 3px;
-    margin: 0 0 10px;
     padding: 5px 5px 5px 10px;
     font-size: 14px;
     border-right: 5px solid transparent;
