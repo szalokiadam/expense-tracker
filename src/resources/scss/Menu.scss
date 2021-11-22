@@ -44,6 +44,9 @@
         background: lighten($background-color2, 15%);
       }
     }
+    .button {
+      flex: 1 1 0%;
+    }
   }
   .version {
     flex: 0 0 auto;

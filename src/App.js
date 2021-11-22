@@ -5,11 +5,11 @@ import Error404 from "./components/Error404";
 import LoginError from "./components/LoginError";
 import TransactionsByDate from "./components/TransactionsByDate";
 import { Header, Footer } from "./components/HeaderFooter";
+import Login from "./components/Login";
+import Settings from "./components/Settings";
 
 // REDUX
 import { connect } from "react-redux";
-import Login from "./components/Login";
-import Settings from "./components/Settings";
 
 function App({ loggedIn }) {
   return (
